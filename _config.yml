@@ -30,10 +30,10 @@ baseurl: ""
 
 # Navigation menu
 navigation_links:
-  #- title: Blog
-  #  url: /
+  - title: Blog
+    url: /
 
-  - title: About
+  - title: Members
     url: /
     
   - title: Categories
