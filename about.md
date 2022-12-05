@@ -4,6 +4,8 @@ title: About
 permalink: /about
 ---
 
-Hi, Write an awesome description about your blog here.  
-Feel free to make it a bit more interesting by adding a picture or two.  
-Only limit here is your creativity and imagination. Unleash them with full force.  
+수원대학교 DS&ML센터의 TECH BLOG입니다.
+
+수원대학교 AI/SW developers의 
+데이터 분석/인공지능 모델링/소프트웨어 개발
+프로젝트 결과를 전시합니다.
