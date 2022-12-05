@@ -20,17 +20,24 @@ layout: default
       {% endif %}
     </div>
     
-    <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read more
+
+    <div class="read-more">
       {% if post %}
       {% assign authors = post.authors %}
       {% else %}
       {% assign authors = page.authors %}
       {% endif %}
       {% for author in authors %}
-      {{author}}
+        {% if forloop.index == 1 %}
+        <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">{{author}}</a>
+        {% else %}
+        &nbsp;&#183;<a href="{{ site.baseurl }}{{ post.url }}" class="read-more">{{author}}</a>
+        {% endif %}
       {% unless forloop.last %}{% endunless %}
       {% endfor %}
-      </a>
+      
+    {{ page.date | date: "%B %e, %Y" }}
+    </div>
 
     <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read more&nbsp;&#183;{% include read-time.html content=post.content %}</a>
   </article>
