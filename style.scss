@@ -434,8 +434,8 @@ a[href^="#fnref:"] {
 }
 
 .site-avatar {
-  width: 70px;
-  height: 33px;
+  width: 58px;
+  height: 35px;
   margin-right: 15px;
 
   @include mobile {
@@ -490,6 +490,7 @@ a[href^="#fnref:"] {
 }
 
 nav {
+  margin-bottom: 5px;
   font-family: $sans-font-family;
   font-size: 18px !important;
 
