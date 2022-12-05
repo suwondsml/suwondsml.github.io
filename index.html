@@ -22,7 +22,8 @@ layout: default
     
     <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read more
       {% for author in post.authors %}
-      author      
+      {{ author }}
+      {% endfor %}
       </a>
 
     <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read more&nbsp;&#183;{% include read-time.html content=post.content %}</a>
