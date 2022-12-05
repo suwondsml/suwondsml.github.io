@@ -6,10 +6,10 @@
 lang: "en"
 
 # Name of your site (displayed in the header)
-title: 수원대학교 ds&ml tech blog
+title: DS&ML TECH BLOG
 
 # Short bio or description (displayed in the header)
-description: A simple, elegant and full featured Jekyll theme
+description: 수원대학교 DS&ML Center
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: /assets/image/avatar.png
