@@ -30,13 +30,13 @@ baseurl: ""
 
 # Navigation menu
 navigation_links:
-  - title: Blog
+  - title: 개인
     url: /
 
-  - title: Members
+  - title: 팀플
     url: /
     
-  - title: Categories
+  - title: Members
     url: /categories
 
   - title: Search
