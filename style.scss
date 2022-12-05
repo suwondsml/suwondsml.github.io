@@ -423,7 +423,7 @@ a[href^="#fnref:"] {
 
 .masthead {
   display: flex;
-  align-items: center;
+  align-items: end;
   padding: 20px 0;
   border-bottom: 01px solid $lightGray;
 
@@ -434,9 +434,8 @@ a[href^="#fnref:"] {
 }
 
 .site-avatar {
-  align-items: center;
-  width: 170px;
-  height: 70px;
+  width: 150px;
+  height: 100px;
   margin-right: 15px;
 
   @include mobile {
