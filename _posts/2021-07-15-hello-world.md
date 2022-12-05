@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Hello World
+authors: [Hongryul Ahn, roro]
 categories: [content, demo]
 ---
 
