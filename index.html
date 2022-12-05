@@ -31,12 +31,12 @@ layout: default
         {% if forloop.index == 1 %}
         <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">{{author}}</a>
         {% else %}
-        &nbsp;&#183;<a href="{{ site.baseurl }}{{ post.url }}" class="read-more">{{author}}</a>
+        &nbsp;&#183;&nbsp;<a href="{{ site.baseurl }}{{ post.url }}" class="read-more">{{author}}</a>
         {% endif %}
       {% unless forloop.last %}{% endunless %}
       {% endfor %}
       
-    {{ page.date | date: "%B %e, %Y" }}
+      <span style="color: #333333; font-weight: normal;">&nbsp;&nbsp;{{ post.date | date: "%B %e, %Y" }}</span>
     </div>
 
     <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read more&nbsp;&#183;{% include read-time.html content=post.content %}</a>
