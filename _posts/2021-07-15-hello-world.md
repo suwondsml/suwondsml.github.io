@@ -3,6 +3,8 @@ layout: post
 title: Hello World
 authors: [Hongryul Ahn, roro]
 categories: [content, demo]
+project: personal
+term: 2022fall
 ---
 
 Hello and welcome. The only purpose of this post is to greet you when your site comes alive for the first time.  
