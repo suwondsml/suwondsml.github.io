@@ -31,7 +31,7 @@ baseurl: ""
 # Navigation menu
 navigation_links:
   - title: 개인
-    url: /
+    url: /personal
 
   - title: 팀플
     url: /
