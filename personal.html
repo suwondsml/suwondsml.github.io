@@ -6,15 +6,15 @@ title: Posts of Personal Projects
 
 <div id="archives">
 
-  {% assign categories_sorted = site.categories | sort %}
-  {% for category in categories_sorted %}
+  {% assign term_sorted = site.term | sort %}
+  {% for term in term_sorted %}
   <div class="archive-group">
-    {% capture category_name %}{{ category | first }}{% endcapture %}
-    <div id="#{{ category_name | slugify }}"></div>
+    {% capture term_name %}{{ term | first }}{% endcapture %}
+    <div id="#{{ term_name | slugify }}"></div>
     <p></p>
-      <h3 class="category-head"><i class="fa fa-tags fa-fw" aria-hidden="true"></i>&nbsp;{{ category_name }}</h3>
-    <a name="{{ category_name | slugify }}"></a>
-    {% for post in site.categories[category_name] %}
+      <h3 class="category-head"><i class="fa fa-tags fa-fw" aria-hidden="true"></i>&nbsp;{{ term_name }}</h3>
+    <a name="{{ term_name | slugify }}"></a>
+    {% for post in site.term[term_name] %}
     <article class="archive-item">
       <ul>
 	<li><h4><a href="{{ site.baseurl }}{{ post.url }}">{{post.title}}</a></h4></li>
