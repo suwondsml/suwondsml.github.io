@@ -30,8 +30,8 @@ baseurl: ""
 
 # Navigation menu
 navigation_links:
-  - title: 개인
-    url: /personal
+  - title: AI/SW Developers
+    url: /aiswdevelopers
 
   - title: 팀플
     url: /
