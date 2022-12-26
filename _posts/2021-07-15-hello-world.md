@@ -2,9 +2,7 @@
 layout: post
 title: Hello World
 authors: [Hongryul Ahn, roro]
-categories: [content, demo]
-project: personal
-term: 1
+categories: [1기 AI/SW developers(개인 프로젝트)]
 ---
 
 Hello and welcome. The only purpose of this post is to greet you when your site comes alive for the first time.  
