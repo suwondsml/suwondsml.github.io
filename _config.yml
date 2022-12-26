@@ -33,12 +33,9 @@ navigation_links:
   - title: AI/SW Developers
     url: /aiswdevelopers
 
-  - title: 팀플
-    url: /
+  - title: archive
+    url: /archive
     
-  - title: Members
-    url: /categories
-
   - title: Search
     url: /search
 
