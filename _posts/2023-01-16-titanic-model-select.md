@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Hello World
-authors: [Hongryul Ahn, roro]
+title: Titanic Model Select
+authors: [Hongryul Ahn]
 categories: [1기 AI/SW developers(개인 프로젝트)]
 ---
 
@@ -1517,7 +1517,7 @@ ax.set_xticklabels(ax.get_xticklabels(),rotation=60);
 
 
     
-![png](_data/2023-01-16-titanic-model-select/output_48_0.png)
+![png](/_data/2023-01-16-titanic-model-select/output_48_0.png)
     
 
 
