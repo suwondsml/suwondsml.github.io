@@ -1,0 +1,1607 @@
+---
+layout: post
+title: Hello World
+authors: [Hongryul Ahn, roro]
+categories: [1기 AI/SW developers(개인 프로젝트)]
+---
+
+# Titanic 생존자 분류 실습
+
+# 목차
+1. 데이터 불러오기
+1. 데이터 관찰
+1. 데이터 전처리
+   1. 1309명 X 12차원(11 features, 1 label)
+       1. Age: 나이
+       1. Cabin: 객실 번호
+       1. Embarked: 탑승 항구
+       1. Fare: 탑승료
+       1. Name: 이름
+       1. Parch: 함께 탑승한 부모, 아이의 수
+       1. PassengerId: 말 그대로 승객 ID
+       1. Pclass: 좌석 등급
+       1. Sex: 성별
+       1. SibSp: 함께 탑승한 형제 자매 또는 배우자의 수
+       1. Ticket: 티켓 번호    
+       1. Survived : 생존(1) 사망(0)
+1. 최종 데이터
+   1. 1309명 X 19차원(18 features, 1 label)
+1. 머신러닝 모델 학습
+1. 학습 결과 분석
+1. 최고 성능 모델로 재학습
+1. 결과 저장
+
+# 1. 데이터 불러오기
+
+kaggle 사이트로(https://www.kaggle.com/competitions/titanic/data)부터 타이타닉 데이터셋을 다운로드 받아야 합니다.
+
+
+```python
+import numpy as np
+import pandas as pd
+train_data = pd.read_csv('train.csv')
+test_data = pd.read_csv('test.csv')
+data = pd.concat([train_data,test_data],axis=0,ignore_index=True)
+print('train shape ', train_data.shape, '; test shape ',test_data.shape, '; all data',data.shape)
+```
+
+    train shape  (891, 12) ; test shape  (418, 11) ; all data (1309, 12)
+    
+
+# 2. 데이터 관찰하기
+
+데이터는 
+
+1309명(train: 891명, test shape: 418명)의 승객에 대해서 
+
+12개 차원 (feature: 11개, label:1개)로 이루어져 있습니다.
+
+### feature (11개)
+1. Age: 나이
+2. Cabin: 객실 번호
+3. Embarked: 탑승 항구
+4. Fare: 탑승료
+5. Name: 이름
+6. Parch: 함께 탑승한 부모, 아이의 수
+7. PassengerId: 말 그대로 승객 ID
+8. Pclass: 좌석 등급
+9. Sex: 성별
+10. SibSp: 함께 탑승한 형제 자매 또는 배우자의 수
+11. Ticket: 티켓 번호
+
+### label (1개)
+12. Survived : 생존(1) 사망(0)
+
+
+```python
+data.tail()
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1304</th>
+      <td>1305</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>Spector, Mr. Woolf</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>A.5. 3236</td>
+      <td>8.0500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>1305</th>
+      <td>1306</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>Oliva y Ocana, Dona. Fermina</td>
+      <td>female</td>
+      <td>39.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>PC 17758</td>
+      <td>108.9000</td>
+      <td>C105</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>1306</th>
+      <td>1307</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>Saether, Mr. Simon Sivertsen</td>
+      <td>male</td>
+      <td>38.5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>SOTON/O.Q. 3101262</td>
+      <td>7.2500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>1307</th>
+      <td>1308</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>Ware, Mr. Frederick</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>359309</td>
+      <td>8.0500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>1308</th>
+      <td>1309</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>Peter, Master. Michael J</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2668</td>
+      <td>22.3583</td>
+      <td>NaN</td>
+      <td>C</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+숫자 데이터는 6개 (Age,Fare,Parch,PassengerId,Pclass,SibSp,Survived)입니다.
+
+
+```python
+data.describe()
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Fare</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>1309.000000</td>
+      <td>891.000000</td>
+      <td>1309.000000</td>
+      <td>1046.000000</td>
+      <td>1309.000000</td>
+      <td>1309.000000</td>
+      <td>1308.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>655.000000</td>
+      <td>0.383838</td>
+      <td>2.294882</td>
+      <td>29.881138</td>
+      <td>0.498854</td>
+      <td>0.385027</td>
+      <td>33.295479</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>378.020061</td>
+      <td>0.486592</td>
+      <td>0.837836</td>
+      <td>14.413493</td>
+      <td>1.041658</td>
+      <td>0.865560</td>
+      <td>51.758668</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>0.170000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>328.000000</td>
+      <td>0.000000</td>
+      <td>2.000000</td>
+      <td>21.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>7.895800</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>655.000000</td>
+      <td>0.000000</td>
+      <td>3.000000</td>
+      <td>28.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>14.454200</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>982.000000</td>
+      <td>1.000000</td>
+      <td>3.000000</td>
+      <td>39.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>31.275000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>1309.000000</td>
+      <td>1.000000</td>
+      <td>3.000000</td>
+      <td>80.000000</td>
+      <td>8.000000</td>
+      <td>9.000000</td>
+      <td>512.329200</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+카테고리 데이터는 5개(Cabin,Embarked,Name,Sex,Ticket)입니다.
+
+
+```python
+data.describe(include=['O'])
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Ticket</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>1309</td>
+      <td>1309</td>
+      <td>1309</td>
+      <td>295</td>
+      <td>1307</td>
+    </tr>
+    <tr>
+      <th>unique</th>
+      <td>1307</td>
+      <td>2</td>
+      <td>929</td>
+      <td>186</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>top</th>
+      <td>Kelly, Mr. James</td>
+      <td>male</td>
+      <td>CA. 2343</td>
+      <td>C23 C25 C27</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>freq</th>
+      <td>2</td>
+      <td>843</td>
+      <td>11</td>
+      <td>6</td>
+      <td>914</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+# 3. 데이터 전처리
+
+
+```python
+Survived = data.Survived
+
+def join_survived_count(x,y,xName='x',yName='y'):
+    tmp1 = pd.DataFrame({xName:x,yName:y})
+    tmp1 = tmp1.groupby(yName).mean().sort_values(by=xName)
+    tmp2 = y.value_counts().sort_values().to_frame()
+    tmp2.columns = ['Count']
+    tmp2.index.name = yName
+    return(tmp1.join(tmp2))
+```
+
+## 3.1. Pclass: 좌석 등급
+NA 값: 존재하지 않음.
+
+값 범위: 1,2,3
+
+1등급일수록 생존확률 증가
+
+
+```python
+Pclass = data.Pclass
+print(join_survived_count(Survived,Pclass,xName='Survived',yName='Pclass'))
+```
+
+            Survived  Count
+    Pclass                 
+    3       0.242363    709
+    2       0.472826    277
+    1       0.629630    323
+    
+
+## 3.2. Cabin: 객실 번호
+NA 값: 1014개 존재 (N 값으로 대입)
+
+Survived값에 따라서 7개의 그룹으로 분리함
+
+
+```python
+Cabin = data.Cabin.fillna('N')
+Cabin = Cabin.str.extract('(^\D)+', expand=False)
+print(join_survived_count(Survived,Cabin,xName='Survived',yName='Cabin'))
+
+Cabin = Cabin.map({'N':0,'T':0,'A':1,'G':1,'C':2,'F':3,'B':4,'E':5,'D':6})
+print(join_survived_count(Survived,Cabin,xName='Survived',yName='Cabin'))
+```
+
+           Survived  Count
+    Cabin                 
+    T      0.000000      1
+    N      0.299854   1014
+    A      0.466667     22
+    G      0.500000      5
+    C      0.593220     94
+    F      0.615385     21
+    B      0.744681     65
+    E      0.750000     41
+    D      0.757576     46
+           Survived  Count
+    Cabin                 
+    0      0.299419   1015
+    1      0.473684     27
+    2      0.593220     94
+    3      0.615385     21
+    4      0.744681     65
+    5      0.750000     41
+    6      0.757576     46
+    
+
+## 3.3. Embarked: 탑승 항구
+NA 값: 2개 존재 (C값으로 대입)
+
+One-hot 인코딩 수행함
+
+
+```python
+Embarked = data.Embarked.fillna('N')
+print(join_survived_count(Survived,Embarked,xName='Survived',yName='Embarked'))
+Embarked = data.Embarked.fillna('C')
+print(join_survived_count(Survived,Embarked,xName='Survived',yName='Embarked'))
+Embarked_ctg = pd.get_dummies(Embarked,prefix='Embarked')
+```
+
+              Survived  Count
+    Embarked                 
+    S         0.336957    914
+    Q         0.389610    123
+    C         0.553571    270
+    N         1.000000      2
+              Survived  Count
+    Embarked                 
+    S         0.336957    914
+    Q         0.389610    123
+    C         0.558824    272
+    
+
+## 3.4. Fare: 탑승료
+NA 값: 1개 존재 (해당 승객의 class(좌석등급)이 3등급임으로 3등급 median 탑승료인 8.05부여)
+
+
+```python
+Fare = data.Fare.copy(deep=True)
+
+# NaN 값(1개 승객)을 Pclass(좌석등급)의 median 탑승료로 부여함
+tmp = pd.DataFrame({'Pclass':Pclass,'Fare':Fare})
+guess_Fare = tmp.groupby(['Pclass']).Fare.median()
+for i in tmp.Pclass.unique():
+    Fare.loc[(Fare.isnull()) & (tmp.Pclass == i)] = guess_Fare.loc[i]
+
+# Fare의 그룹을 나눔
+Fare.loc[ Fare <= 8] = 0
+Fare.loc[(Fare > 8)  & (Fare <= 16),] = 1
+Fare.loc[(Fare > 16) & (Fare <= 32),] = 2
+Fare.loc[(Fare > 32) & (Fare <= 48),] = 3
+Fare.loc[(Fare > 48) & (Fare <= 100)] = 4
+Fare.loc[ Fare > 100] = 5
+Fare -= Fare.min()
+Fare /= Fare.max()
+print(join_survived_count(Survived,Fare,xName='Survived',yName='Fare'))
+```
+
+          Survived  Count
+    Fare                 
+    0.0   0.215768    360
+    0.2   0.311475    357
+    0.6   0.319149     66
+    0.4   0.451282    281
+    0.8   0.648649    161
+    1.0   0.735849     84
+    
+
+## 3.5. Parch: 함께 탑승한 부모, 아이의 수
+
+많은 가족이 있는 사람은 생존률이 낮다.
+
+SibSp, Parch를 조합하여 Family Size를 계산한다.
+
+
+```python
+FamilySize = pd.Series(data.SibSp + data.Parch, name='FamilySize')
+print(join_survived_count(Survived,FamilySize,xName='Survived',yName='FamilySize'))
+FamilySize = FamilySize.map({0:0,1:1,2:1,3:2,4:3,5:3,6:3,7:4,8:4,9:4,10:4})
+print(join_survived_count(Survived,FamilySize,xName='Survived',yName='FamilySize'))
+
+SibSp = pd.Series(data.SibSp, name='SibSp')
+Parch = pd.Series(data.Parch, name='Parch')
+```
+
+                Survived  Count
+    FamilySize                 
+    7           0.000000      8
+    10          0.000000     11
+    5           0.136364     25
+    4           0.200000     22
+    0           0.303538    790
+    6           0.333333     16
+    1           0.552795    235
+    2           0.578431    159
+    3           0.724138     43
+                Survived  Count
+    FamilySize                 
+    4           0.000000     19
+    3           0.204082     63
+    0           0.303538    790
+    1           0.562738    394
+    2           0.724138     43
+    
+
+## 3.6. Name: 이름
+
+가족의 경우, 생존률이 연관되어 있다.
+
+성(Surnames)에 대해서 가족이 생존한 여부를 조사한다.
+
+
+```python
+Surname = data.Name.str.extract('(^\D+),', expand=False)
+tmp = pd.DataFrame({'Surname':Surname,'name':data.Name})
+N = 1309
+hasFamilySurvived = pd.Series(np.zeros([N]),name='hasFamilySurvived')
+
+for i in range(0,N):
+    if (FamilySize.iloc[i]==0):
+        continue
+    thisname = Surname.iloc[i]
+    index = Survived.loc[(tmp.Surname==thisname) & (Survived==1)].index
+    if (i in index):
+        index = index.drop(i)
+    if (index.empty==False):
+        hasFamilySurvived.iloc[i]=1
+
+hasFamilySurvived=hasFamilySurvived.map({0.0:0,1.0:1})
+print(join_survived_count(Survived,hasFamilySurvived,xName='Survived',yName='hasFamilySurvived'))
+```
+
+                       Survived  Count
+    hasFamilySurvived                 
+    0                  0.326057   1067
+    1                  0.651899    242
+    
+
+## 3.7 신분
+
+5개의 신분을 구분함.
+
+1. Capt, Col, Rev :    군인/목사 (생존률이 낮음)
+2. Mr:               성인 남성(생존률 낮음)
+3. Dr, Major, Master, Sir: 전문직?
+4. Miss, Mlle, Lady: 젊은 여성
+5. Mrs, Mme, Ms, Countess : 나이든 여성(생존률 높음)
+
+
+```python
+Title = data.Name.str.extract(' ([A-Za-z]+)\.', expand=False)
+print(join_survived_count(Survived,Title,xName='Survived',yName='Title'))
+Title.iloc[1305]
+Title = Title.map({'Capt':0,'Col':0,'Rev':0,
+           'Mr':1,                   
+           'Dr':2,'Major':2,'Master':2,'Sir':2,
+           'Miss':3,'Mlle':3,'Lady':3,'Dona':3,'Jonkheer':0,
+           'Mrs':4,'Mme':4,'Ms':4,'Countess':4})
+print(join_survived_count(Survived,Title,xName='Survived',yName='Title'))
+Title_ctg = pd.get_dummies(Title,prefix='Title')
+```
+
+              Survived  Count
+    Title                    
+    Capt      0.000000      1
+    Don       0.000000      1
+    Jonkheer  0.000000      1
+    Rev       0.000000      8
+    Mr        0.156673    757
+    Dr        0.428571      8
+    Col       0.500000      4
+    Major     0.500000      2
+    Master    0.575000     61
+    Miss      0.697802    260
+    Mrs       0.792000    197
+    Mlle      1.000000      2
+    Mme       1.000000      1
+    Countess  1.000000      1
+    Ms        1.000000      2
+    Lady      1.000000      1
+    Sir       1.000000      1
+    Dona           NaN      1
+           Survived  Count
+    Title                 
+    0.0    0.100000     14
+    1.0    0.156673    757
+    2.0    0.560000     72
+    3.0    0.702703    264
+    4.0    0.796875    201
+    
+
+## 3.8. PassengerId: 말 그대로 승객 ID
+
+사용 안함
+
+## 3.9. Sex: 성별
+
+남자(male:1)는 여자(female:0)보다 생존률이 낮다.
+
+
+```python
+Sex = data.Sex.map({'male':1,'female':0})
+print(join_survived_count(Survived,Sex,xName='Survived',yName='Sex'))
+```
+
+         Survived  Count
+    Sex                 
+    1    0.188908    843
+    0    0.742038    466
+    
+
+## 3.10. SibSp: 함께 탑승한 형제 자매 또는 배우자의 수
+
+혼자 여행하는 사람은 생존률이 낮다.
+
+(Parch/SibSp을 이용해서 혼자 탑승한 여부를 계산)
+
+
+```python
+isalone = pd.Series(((data.Parch + data.SibSp)==0).astype('int'),name='isalone')
+print(join_survived_count(Survived,isalone,xName='Survived',yName='isalone'))
+```
+
+             Survived  Count
+    isalone                 
+    1        0.303538    790
+    0        0.505650    519
+    
+
+## 3.10. Ticket: 티켓 번호
+
+생존률에 따라서 5개 그룹으로 나눔
+
+
+```python
+Ticket = data.Ticket.str.extract('(\d+)$', expand=False)
+Ticket.fillna(0,inplace=True)
+Ticket = (Ticket.astype('int')/10000).astype('int')
+tmp = pd.DataFrame({'Survived':Survived,'Ticket':Ticket})
+tmp.groupby('Ticket').Survived.mean().sort_values()
+print(join_survived_count(Survived,Ticket,xName='Survived',yName='Ticket'))
+Ticket = Ticket.map({\
+            4:0,5:0,21:0,32:0,26:0,34:0,
+            31:1,38:1,35:1,37:1,310:1,36:1,
+            0:2,6:2,2:2,39:2,23:2,
+            25:3,24:3,11:3,33:3,3:3,
+            1:4,22:4})
+print(join_survived_count(Survived,Ticket,xName='Survived',yName='Ticket'))
+```
+
+            Survived  Count
+    Ticket                 
+    4       0.000000      7
+    5       0.000000      3
+    21      0.000000      4
+    32      0.000000      4
+    26      0.000000      1
+    34      0.140625    174
+    31      0.176471     27
+    38      0.200000     16
+    35      0.200000     34
+    37      0.240000     33
+    310     0.272727     60
+    36      0.303030     50
+    0       0.314607    266
+    6       0.333333      4
+    2       0.377778     70
+    39      0.416667     15
+    23      0.444444     51
+    25      0.500000     16
+    24      0.500000     39
+    11      0.513889    101
+    33      0.533333     27
+    3       0.558140     66
+    1       0.651007    227
+    22      0.750000     14
+            Survived  Count
+    Ticket                 
+    0       0.127660    193
+    1       0.248322    220
+    2       0.346715    406
+    3       0.523529    249
+    4       0.656051    241
+    
+
+## 3.11. Age: 나이
+
+나이가 적은 사람(어린이)는 성인에 비해 생존률이 높다.
+
+나이를 모르는 경우(NA값)은 다른 데이터를 참조하여 유추함.
+
+
+```python
+Age = data.Age.copy(deep=True)
+Age.loc[(data.Age <= 8) & (data.Age.notna())] = 0
+Age.loc[(data.Age > 8)  & (data.Age <= 16) & (data.Age.notna())] = 1
+Age.loc[(data.Age > 16) & (data.Age <= 32) & (data.Age.notna())] = 2
+Age.loc[(data.Age > 32) & (data.Age <= 48) & (data.Age.notna())] = 3
+Age.loc[(data.Age > 48) & (data.Age <= 64) & (data.Age.notna())] = 4
+Age.loc[(data.Age > 64) & (data.Age.notna())] = 5
+print(join_survived_count(Survived,Age,xName='Survived',yName='Age'))
+
+Age_X = pd.concat([Sex,Pclass,Fare,Title_ctg,Embarked_ctg,FamilySize,SibSp,Parch,isalone],axis=1)
+Age_Y = Age.copy(deep=True)
+Age_X_train = Age_X.loc[data.Age.notna()]
+Age_Y_train = Age_Y.loc[data.Age.notna()]
+Age_X_test = Age_X.loc[data.Age.isnull()]
+
+from sklearn.svm import SVC, LinearSVC
+AgeModel = SVC(C=5)
+AgeModel.fit(Age_X_train, Age_Y_train)
+print('Age training score ', round(AgeModel.score(Age_X_train, Age_Y_train) * 100, 2))
+Age_Y_pred = AgeModel.predict(Age_X_test)
+Age.loc[data.Age.isnull()] = Age_Y_pred
+
+print(join_survived_count(Survived,Age,xName='Survived',yName='Age'))
+Age -= Age.min()
+Age /= Age.max()
+```
+
+         Survived  Count
+    Age                 
+    5.0  0.090909     13
+    2.0  0.369942    524
+    3.0  0.404255    269
+    1.0  0.413043     62
+    4.0  0.434783    106
+    0.0  0.666667     72
+    Age training score  64.91
+         Survived  Count
+    Age                 
+    5.0  0.090909     13
+    2.0  0.343882    720
+    1.0  0.345455     73
+    3.0  0.410138    310
+    4.0  0.436620    109
+    0.0  0.619048     84
+    
+
+# 4. 최종 데이터
+
+최종 데이터는 1309명 X 19 차원(Survived, Pclass, Age, Sex, Fare, Title_0, Title_1, Title_2, Title_3, Title_4, Embarked_C, Embarked_Q, Embarked_S, FamilySize, SibSp, Parch, hasFamilySurvived, Cabin, Ticket)으로 구성
+
+
+```python
+data_pruned = pd.concat([Survived,Pclass,Age,Sex,Fare,Title_ctg,Embarked_ctg,
+                         FamilySize,SibSp,Parch,hasFamilySurvived,Cabin,Ticket],axis=1)
+data_pruned.head()
+
+train = data_pruned.iloc[0:891]
+test = data_pruned.iloc[891:1309]
+train_X = train.loc[:,'Pclass':]
+train_Y = train.loc[:,'Survived']
+test_X = test.loc[:,'Pclass':]
+test_Y = test.loc[:,'Survived']
+print('shapes: ',train_X.shape,train_Y.shape,test_X.shape,test_Y.shape)
+```
+
+    shapes:  (891, 18) (891,) (418, 18) (418,)
+    
+
+# 5. 머신러닝 모델 학습
+
+14개 머신모델에 대해서 StratifiedKFold를 사용하여 10회 반복 학습
+
+
+```python
+from sklearn.model_selection import StratifiedKFold
+from sklearn.model_selection import StratifiedShuffleSplit
+from sklearn.metrics import accuracy_score
+import time
+import warnings
+warnings.filterwarnings(action='ignore', category=DeprecationWarning)
+
+results=[]
+i=0
+random_state=1000
+skf = StratifiedKFold(n_splits=10)
+#skf = StratifiedShuffleSplit(n_splits=10, test_size=0.2, random_state=0)
+for train_idx, validation_idx in skf.split(train_X,train_Y):
+    x_train = train_X.iloc[train_idx,:]
+    y_train = train_Y.iloc[train_idx]
+    x_validation = train_X.iloc[validation_idx,:]
+    y_validation = train_Y.iloc[validation_idx]
+    # 1. Logistic regression    
+    from sklearn.linear_model import LogisticRegression
+    model = LogisticRegression(max_iter=1000, random_state=random_state)
+    start_time = time.time()
+    model.fit(x_train, y_train)
+    training_time = time.time() - start_time
+    y_pred_train = model.predict(x_train)
+    y_pred_validation = model.predict(x_validation)
+    accuracy_train = accuracy_score(y_train, y_pred_train)
+    accuracy_validation = accuracy_score(y_validation, y_pred_validation)
+    results.append([i,'LogisticRegression',accuracy_train,accuracy_validation,training_time])
+    # 2. Decision tree
+    from sklearn.tree import DecisionTreeClassifier
+    model = DecisionTreeClassifier()
+    start_time = time.time()
+    model.fit(x_train, y_train)
+    training_time = time.time() - start_time
+    y_pred_train = model.predict(x_train)
+    y_pred_validation = model.predict(x_validation)
+    accuracy_train = accuracy_score(y_train, y_pred_train)
+    accuracy_validation = accuracy_score(y_validation, y_pred_validation)
+    results.append([i,'DecisionTree',accuracy_train,accuracy_validation,training_time])
+    # 3. Support vector machine
+    from sklearn.svm import SVC
+    model = SVC()
+    start_time = time.time()
+    model.fit(x_train, y_train)
+    training_time = time.time() - start_time
+    y_pred_train = model.predict(x_train)
+    y_pred_validation = model.predict(x_validation)
+    accuracy_train = accuracy_score(y_train, y_pred_train)
+    accuracy_validation = accuracy_score(y_validation, y_pred_validation)
+    results.append([i,'SupportVectorMachine',accuracy_train,accuracy_validation,training_time])
+    # 4. Gaussian naive bayes
+    from sklearn.naive_bayes import GaussianNB
+    model = GaussianNB()
+    start_time = time.time()
+    model.fit(x_train, y_train)
+    training_time = time.time() - start_time
+    y_pred_train = model.predict(x_train)
+    y_pred_validation = model.predict(x_validation)
+    accuracy_train = accuracy_score(y_train, y_pred_train)
+    accuracy_validation = accuracy_score(y_validation, y_pred_validation)
+    results.append([i,'GaussianNaiveBayes',accuracy_train,accuracy_validation,training_time])
+    # 5. K nearest neighbor
+    from sklearn.neighbors import KNeighborsClassifier
+    model = KNeighborsClassifier()
+    start_time = time.time()
+    model.fit(x_train, y_train)
+    training_time = time.time() - start_time
+    y_pred_train = model.predict(x_train)
+    y_pred_validation = model.predict(x_validation)
+    accuracy_train = accuracy_score(y_train, y_pred_train)
+    accuracy_validation = accuracy_score(y_validation, y_pred_validation)
+    results.append([i,'KNearestNeighbor',accuracy_train,accuracy_validation,training_time]) 
+    # 6. Random forest
+    from sklearn.ensemble import RandomForestClassifier
+    model = RandomForestClassifier(n_estimators=1000, random_state=random_state)
+    start_time = time.time()
+    model.fit(x_train, y_train)
+    training_time = time.time() - start_time
+    y_pred_train = model.predict(x_train)
+    y_pred_validation = model.predict(x_validation)
+    accuracy_train = accuracy_score(y_train, y_pred_train)
+    accuracy_validation = accuracy_score(y_validation, y_pred_validation)
+    results.append([i,'RandomForest',accuracy_train,accuracy_validation,training_time])
+    # 7. Gradient boosing
+    from sklearn.ensemble import GradientBoostingClassifier
+    model = GradientBoostingClassifier(n_estimators=1000, random_state=random_state)
+    start_time = time.time()
+    model.fit(x_train, y_train)
+    training_time = time.time() - start_time
+    y_pred_train = model.predict(x_train)
+    y_pred_validation = model.predict(x_validation)
+    accuracy_train = accuracy_score(y_train, y_pred_train)
+    accuracy_validation = accuracy_score(y_validation, y_pred_validation)
+    results.append([i,'GradientBoosing',accuracy_train,accuracy_validation,training_time])
+    # 8. Neural network
+    from sklearn.neural_network import MLPClassifier
+    model = MLPClassifier(max_iter=1000, random_state=random_state)
+    start_time = time.time()
+    model.fit(x_train, y_train)
+    training_time = time.time() - start_time
+    y_pred_train = model.predict(x_train)
+    y_pred_validation = model.predict(x_validation)
+    accuracy_train = accuracy_score(y_train, y_pred_train)
+    accuracy_validation = accuracy_score(y_validation, y_pred_validation)
+    results.append([i,'NeuralNetwork',accuracy_train,accuracy_validation,training_time])
+    # 9. Bagging classifier
+    from sklearn.ensemble import BaggingClassifier
+    model = BaggingClassifier(n_estimators=1000, random_state=random_state)
+    start_time = time.time()
+    model.fit(x_train, y_train)
+    training_time = time.time() - start_time
+    y_pred_train = model.predict(x_train)
+    y_pred_validation = model.predict(x_validation)
+    accuracy_train = accuracy_score(y_train, y_pred_train)
+    accuracy_validation = accuracy_score(y_validation, y_pred_validation)
+    results.append([i,'BaggingClassifier',accuracy_train,accuracy_validation,training_time])
+    # 10. Extra trees
+    from sklearn.ensemble import ExtraTreesClassifier
+    model = ExtraTreesClassifier(n_estimators=1000, random_state=random_state)
+    start_time = time.time()
+    model.fit(x_train, y_train)
+    training_time = time.time() - start_time
+    y_pred_train = model.predict(x_train)
+    y_pred_validation = model.predict(x_validation)
+    accuracy_train = accuracy_score(y_train, y_pred_train)
+    accuracy_validation = accuracy_score(y_validation, y_pred_validation)
+    results.append([i,'ExtraTrees',accuracy_train,accuracy_validation,training_time])    
+    # 11. Adaboost
+    from sklearn.ensemble import AdaBoostClassifier
+    model = AdaBoostClassifier(n_estimators=1000, random_state=random_state)
+    start_time = time.time()
+    model.fit(x_train, y_train)
+    training_time = time.time() - start_time
+    y_pred_train = model.predict(x_train)
+    y_pred_validation = model.predict(x_validation)
+    accuracy_train = accuracy_score(y_train, y_pred_train)
+    accuracy_validation = accuracy_score(y_validation, y_pred_validation)
+    results.append([i,'AdaBoost',accuracy_train,accuracy_validation,training_time])    
+    # 12. XGboost
+    from xgboost import XGBClassifier
+    model = XGBClassifier(n_estimators=1000, random_state=random_state)
+    start_time = time.time()
+    model.fit(x_train, y_train)
+    training_time = time.time() - start_time
+    y_pred_train = model.predict(x_train)
+    y_pred_validation = model.predict(x_validation)
+    accuracy_train = accuracy_score(y_train, y_pred_train)
+    accuracy_validation = accuracy_score(y_validation, y_pred_validation)
+    results.append([i,'XGBoost',accuracy_train,accuracy_validation,training_time])    
+    # 13. LightGBM
+    from lightgbm import LGBMClassifier
+    model = LGBMClassifier(n_estimators=1000, random_state=random_state)
+    start_time = time.time()
+    model.fit(x_train, y_train)
+    training_time = time.time() - start_time
+    y_pred_train = model.predict(x_train)
+    y_pred_validation = model.predict(x_validation)
+    accuracy_train = accuracy_score(y_train, y_pred_train)
+    accuracy_validation = accuracy_score(y_validation, y_pred_validation)
+    results.append([i,'lightGBM',accuracy_train,accuracy_validation,training_time])    
+    # 14. Catboost
+    from catboost import CatBoostClassifier
+    model = CatBoostClassifier(n_estimators=1000, verbose=False, random_state=random_state)
+    start_time = time.time()
+    model.fit(x_train, y_train)
+    training_time = time.time() - start_time
+    y_pred_train = model.predict(x_train)
+    y_pred_validation = model.predict(x_validation)
+    accuracy_train = accuracy_score(y_train, y_pred_train)
+    accuracy_validation = accuracy_score(y_validation, y_pred_validation)
+    results.append([i,'CatBoostClassifier',accuracy_train,accuracy_validation,training_time])    
+    i+=1
+```
+
+# 6. 학습 결과 분석
+
+## 6.1. 결과 테이블 확인
+
+
+```python
+df_results =pd.DataFrame(data=results, 
+                columns= ['iter','method','accuracy_train','accuracy_validation','training_time'])
+df_results.tail(20)
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>iter</th>
+      <th>method</th>
+      <th>accuracy_train</th>
+      <th>accuracy_validation</th>
+      <th>training_time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>120</th>
+      <td>8</td>
+      <td>BaggingClassifier</td>
+      <td>0.931421</td>
+      <td>0.865169</td>
+      <td>3.884473</td>
+    </tr>
+    <tr>
+      <th>121</th>
+      <td>8</td>
+      <td>ExtraTrees</td>
+      <td>0.931421</td>
+      <td>0.831461</td>
+      <td>2.081072</td>
+    </tr>
+    <tr>
+      <th>122</th>
+      <td>8</td>
+      <td>AdaBoost</td>
+      <td>0.836658</td>
+      <td>0.865169</td>
+      <td>2.415645</td>
+    </tr>
+    <tr>
+      <th>123</th>
+      <td>8</td>
+      <td>XGBoost</td>
+      <td>0.931421</td>
+      <td>0.831461</td>
+      <td>0.575037</td>
+    </tr>
+    <tr>
+      <th>124</th>
+      <td>8</td>
+      <td>lightGBM</td>
+      <td>0.931421</td>
+      <td>0.831461</td>
+      <td>0.591957</td>
+    </tr>
+    <tr>
+      <th>125</th>
+      <td>8</td>
+      <td>CatBoostClassifier</td>
+      <td>0.901496</td>
+      <td>0.876404</td>
+      <td>1.127719</td>
+    </tr>
+    <tr>
+      <th>126</th>
+      <td>9</td>
+      <td>LogisticRegression</td>
+      <td>0.841646</td>
+      <td>0.853933</td>
+      <td>0.037739</td>
+    </tr>
+    <tr>
+      <th>127</th>
+      <td>9</td>
+      <td>DecisionTree</td>
+      <td>0.940150</td>
+      <td>0.820225</td>
+      <td>0.004174</td>
+    </tr>
+    <tr>
+      <th>128</th>
+      <td>9</td>
+      <td>SupportVectorMachine</td>
+      <td>0.849127</td>
+      <td>0.853933</td>
+      <td>0.024009</td>
+    </tr>
+    <tr>
+      <th>129</th>
+      <td>9</td>
+      <td>GaussianNaiveBayes</td>
+      <td>0.801746</td>
+      <td>0.842697</td>
+      <td>0.004951</td>
+    </tr>
+    <tr>
+      <th>130</th>
+      <td>9</td>
+      <td>KNearestNeighbor</td>
+      <td>0.866584</td>
+      <td>0.820225</td>
+      <td>0.005859</td>
+    </tr>
+    <tr>
+      <th>131</th>
+      <td>9</td>
+      <td>RandomForest</td>
+      <td>0.940150</td>
+      <td>0.831461</td>
+      <td>2.592850</td>
+    </tr>
+    <tr>
+      <th>132</th>
+      <td>9</td>
+      <td>GradientBoosing</td>
+      <td>0.935162</td>
+      <td>0.831461</td>
+      <td>1.271622</td>
+    </tr>
+    <tr>
+      <th>133</th>
+      <td>9</td>
+      <td>NeuralNetwork</td>
+      <td>0.847880</td>
+      <td>0.876404</td>
+      <td>0.598624</td>
+    </tr>
+    <tr>
+      <th>134</th>
+      <td>9</td>
+      <td>BaggingClassifier</td>
+      <td>0.940150</td>
+      <td>0.831461</td>
+      <td>3.782673</td>
+    </tr>
+    <tr>
+      <th>135</th>
+      <td>9</td>
+      <td>ExtraTrees</td>
+      <td>0.940150</td>
+      <td>0.831461</td>
+      <td>2.062010</td>
+    </tr>
+    <tr>
+      <th>136</th>
+      <td>9</td>
+      <td>AdaBoost</td>
+      <td>0.846633</td>
+      <td>0.853933</td>
+      <td>2.426585</td>
+    </tr>
+    <tr>
+      <th>137</th>
+      <td>9</td>
+      <td>XGBoost</td>
+      <td>0.940150</td>
+      <td>0.808989</td>
+      <td>0.583528</td>
+    </tr>
+    <tr>
+      <th>138</th>
+      <td>9</td>
+      <td>lightGBM</td>
+      <td>0.940150</td>
+      <td>0.820225</td>
+      <td>0.595859</td>
+    </tr>
+    <tr>
+      <th>139</th>
+      <td>9</td>
+      <td>CatBoostClassifier</td>
+      <td>0.910224</td>
+      <td>0.831461</td>
+      <td>1.178369</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+## 6.2. 결과 순위 확인
+
+
+```python
+import numpy as np
+df_acc_test = df_results.pivot_table(index='method', columns='iter')["accuracy_validation"].reset_index()
+df_acc_test['mean']=np.mean(df_acc_test, axis=1)
+df_acc_test=df_acc_test.sort_values('mean')
+df_acc_test
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>iter</th>
+      <th>method</th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>mean</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5</th>
+      <td>GaussianNaiveBayes</td>
+      <td>0.777778</td>
+      <td>0.764045</td>
+      <td>0.775281</td>
+      <td>0.786517</td>
+      <td>0.797753</td>
+      <td>0.775281</td>
+      <td>0.808989</td>
+      <td>0.617978</td>
+      <td>0.876404</td>
+      <td>0.842697</td>
+      <td>0.782272</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>XGBoost</td>
+      <td>0.788889</td>
+      <td>0.820225</td>
+      <td>0.730337</td>
+      <td>0.842697</td>
+      <td>0.797753</td>
+      <td>0.786517</td>
+      <td>0.808989</td>
+      <td>0.853933</td>
+      <td>0.831461</td>
+      <td>0.808989</td>
+      <td>0.806979</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>DecisionTree</td>
+      <td>0.766667</td>
+      <td>0.842697</td>
+      <td>0.707865</td>
+      <td>0.853933</td>
+      <td>0.797753</td>
+      <td>0.808989</td>
+      <td>0.797753</td>
+      <td>0.831461</td>
+      <td>0.842697</td>
+      <td>0.820225</td>
+      <td>0.807004</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>lightGBM</td>
+      <td>0.833333</td>
+      <td>0.820225</td>
+      <td>0.730337</td>
+      <td>0.820225</td>
+      <td>0.820225</td>
+      <td>0.786517</td>
+      <td>0.797753</td>
+      <td>0.820225</td>
+      <td>0.831461</td>
+      <td>0.820225</td>
+      <td>0.808052</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>KNearestNeighbor</td>
+      <td>0.788889</td>
+      <td>0.775281</td>
+      <td>0.696629</td>
+      <td>0.820225</td>
+      <td>0.820225</td>
+      <td>0.842697</td>
+      <td>0.831461</td>
+      <td>0.831461</td>
+      <td>0.887640</td>
+      <td>0.820225</td>
+      <td>0.811473</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>GradientBoosing</td>
+      <td>0.800000</td>
+      <td>0.820225</td>
+      <td>0.752809</td>
+      <td>0.831461</td>
+      <td>0.831461</td>
+      <td>0.831461</td>
+      <td>0.820225</td>
+      <td>0.865169</td>
+      <td>0.831461</td>
+      <td>0.831461</td>
+      <td>0.821573</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>SupportVectorMachine</td>
+      <td>0.822222</td>
+      <td>0.786517</td>
+      <td>0.775281</td>
+      <td>0.842697</td>
+      <td>0.831461</td>
+      <td>0.808989</td>
+      <td>0.820225</td>
+      <td>0.820225</td>
+      <td>0.865169</td>
+      <td>0.853933</td>
+      <td>0.822672</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>AdaBoost</td>
+      <td>0.777778</td>
+      <td>0.820225</td>
+      <td>0.764045</td>
+      <td>0.865169</td>
+      <td>0.808989</td>
+      <td>0.820225</td>
+      <td>0.820225</td>
+      <td>0.842697</td>
+      <td>0.865169</td>
+      <td>0.853933</td>
+      <td>0.823845</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>NeuralNetwork</td>
+      <td>0.833333</td>
+      <td>0.775281</td>
+      <td>0.786517</td>
+      <td>0.853933</td>
+      <td>0.865169</td>
+      <td>0.786517</td>
+      <td>0.797753</td>
+      <td>0.842697</td>
+      <td>0.853933</td>
+      <td>0.876404</td>
+      <td>0.827154</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>RandomForest</td>
+      <td>0.833333</td>
+      <td>0.820225</td>
+      <td>0.719101</td>
+      <td>0.853933</td>
+      <td>0.853933</td>
+      <td>0.853933</td>
+      <td>0.831461</td>
+      <td>0.831461</td>
+      <td>0.853933</td>
+      <td>0.831461</td>
+      <td>0.828277</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ExtraTrees</td>
+      <td>0.822222</td>
+      <td>0.831461</td>
+      <td>0.719101</td>
+      <td>0.865169</td>
+      <td>0.831461</td>
+      <td>0.865169</td>
+      <td>0.842697</td>
+      <td>0.853933</td>
+      <td>0.831461</td>
+      <td>0.831461</td>
+      <td>0.829413</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>BaggingClassifier</td>
+      <td>0.822222</td>
+      <td>0.842697</td>
+      <td>0.719101</td>
+      <td>0.842697</td>
+      <td>0.842697</td>
+      <td>0.842697</td>
+      <td>0.842697</td>
+      <td>0.865169</td>
+      <td>0.865169</td>
+      <td>0.831461</td>
+      <td>0.831660</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>LogisticRegression</td>
+      <td>0.822222</td>
+      <td>0.820225</td>
+      <td>0.775281</td>
+      <td>0.876404</td>
+      <td>0.842697</td>
+      <td>0.820225</td>
+      <td>0.831461</td>
+      <td>0.842697</td>
+      <td>0.876404</td>
+      <td>0.853933</td>
+      <td>0.836155</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>CatBoostClassifier</td>
+      <td>0.833333</td>
+      <td>0.831461</td>
+      <td>0.741573</td>
+      <td>0.876404</td>
+      <td>0.853933</td>
+      <td>0.853933</td>
+      <td>0.820225</td>
+      <td>0.853933</td>
+      <td>0.876404</td>
+      <td>0.831461</td>
+      <td>0.837266</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+## 6.3. 결과 통계 측정
+
+
+```python
+import numpy as np
+from scipy import stats
+
+# 비모수적 검정(parametric test)
+print("Best model is {}. So, the others are compared to {}".format(
+    df_acc_test.iloc[13,0],df_acc_test.iloc[13,0]))
+for i in range(13):
+    print(df_acc_test.iloc[i,0], 'vs.', df_acc_test.iloc[13,0],
+          stats.wilcoxon(df_acc_test.iloc[i,1:-1], df_acc_test.iloc[13,1:-1])) # Wilcoxon signed-rank test
+```
+
+    Best model is CatBoostClassifier. So, the others are compared to CatBoostClassifier
+    GaussianNaiveBayes vs. CatBoostClassifier WilcoxonResult(statistic=4.0, pvalue=0.028401837044201694)
+    XGBoost vs. CatBoostClassifier WilcoxonResult(statistic=0.0, pvalue=0.007473541540877042)
+    DecisionTree vs. CatBoostClassifier WilcoxonResult(statistic=1.0, pvalue=0.00683774356850919)
+    lightGBM vs. CatBoostClassifier WilcoxonResult(statistic=0.0, pvalue=0.007420961287866498)
+    KNearestNeighbor vs. CatBoostClassifier WilcoxonResult(statistic=4.0, pvalue=0.0162542088976566)
+    GradientBoosing vs. CatBoostClassifier WilcoxonResult(statistic=3.5, pvalue=0.041558707296959874)
+    SupportVectorMachine vs. CatBoostClassifier WilcoxonResult(statistic=9.0, pvalue=0.10880943004054568)
+    AdaBoost vs. CatBoostClassifier WilcoxonResult(statistic=11.0, pvalue=0.1689015887216404)
+    NeuralNetwork vs. CatBoostClassifier WilcoxonResult(statistic=14.5, pvalue=0.34069844083463674)
+    RandomForest vs. CatBoostClassifier WilcoxonResult(statistic=1.5, pvalue=0.05569962596664958)
+    ExtraTrees vs. CatBoostClassifier WilcoxonResult(statistic=7.0, pvalue=0.2350444507531182)
+    BaggingClassifier vs. CatBoostClassifier WilcoxonResult(statistic=13.5, pvalue=0.28205887576155886)
+    LogisticRegression vs. CatBoostClassifier WilcoxonResult(statistic=17.0, pvalue=0.8871157967199846)
+    
+
+    /opt/conda/lib/python3.7/site-packages/scipy/stats/morestats.py:2879: UserWarning: Sample size too small for normal approximation.
+      warnings.warn("Sample size too small for normal approximation.")
+    
+
+## 6.4. 결과 시각화
+
+
+```python
+import seaborn as sns
+#from statannot import add_stat_annotation
+ax = sns.barplot(x="method", y="accuracy_validation", data=df_results, capsize=.2, 
+                 order=df_results.groupby('method').mean().sort_values('accuracy_validation').index)
+ax.set(ylim=(0.70, 0.91))
+ax.set_xticklabels(ax.get_xticklabels(),rotation=60);
+```
+
+
+    
+![png](_data/2023-01-16-titanic-model-select/output_48_0.png)
+    
+
+
+## 7. 최고 성능 모델로 재학습
+
+최고 성능 모델이 CatBoostClassifier이므로 전체 학습데이터셋(training+validation 데이터셋)을 사용하여 재학습
+
+
+```python
+from catboost import CatBoostClassifier
+model = CatBoostClassifier(n_estimators=1000, verbose=False, random_state=random_state)
+start_time = time.time()
+model.fit(train_X, train_Y)
+training_time = time.time() - start_time
+y_pred_test = model.predict(test_X)
+```
+
+# 8. 결과 파일 저장
+
+예측 결과를 Kaggle에 제출하는 형식으로 만든 후 csv 파일로 저장
+
+
+```python
+submission = pd.DataFrame({
+    "PassengerId": data[891:]["PassengerId"], 
+    "Survived": y_pred_test
+},dtype='int32')
+submission.to_csv('submission.csv', index=False)
+submission.head()
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>891</th>
+      <td>892</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>892</th>
+      <td>893</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>893</th>
+      <td>894</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>894</th>
+      <td>895</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>895</th>
+      <td>896</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
