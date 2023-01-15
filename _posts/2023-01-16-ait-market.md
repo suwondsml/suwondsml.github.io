@@ -1,3 +1,10 @@
+---
+layout: post
+title: Titanic Model Select
+authors: [Hongryul Ahn, Eunsu Kim, Inho Jung]
+categories: [1기 AI/SW developers(팀 프로젝트)]
+---
+
 # # WHAT? 
 
 # "AIT마켓" : AI트레이더 거래 플랫폼
@@ -1458,7 +1465,7 @@ plt.show()
 
 
     
-![png](output_36_0.png)
+![png](/_data/2023-01-16-ait-market/output_36_0.png)
     
 
 
@@ -1496,7 +1503,7 @@ print('푸른색 분포의 평균 :',np.mean(lower_80))
 
 
     
-![png](output_38_1.png)
+![png](/_data/2023-01-16-ait-market/output_38_1.png)
     
 
 
@@ -1644,7 +1651,7 @@ plt.show()
 
 
     
-![png](output_47_0.png)
+![png](/_data/2023-01-16-ait-market/output_47_0.png)
     
 
 
@@ -1682,7 +1689,7 @@ print('푸른색 분포의 평균 :',np.mean(lower_80))
 
 
     
-![png](output_49_1.png)
+![png](/_data/2023-01-16-ait-market/output_49_1.png)
     
 
 
@@ -1844,7 +1851,7 @@ plt.show()
 
 
     
-![png](output_58_0.png)
+![png](/_data/2023-01-16-ait-market/output_58_0.png)
     
 
 
@@ -1882,7 +1889,7 @@ print('푸른색 분포의 평균 :',np.mean(lower_80))
 
 
     
-![png](output_60_1.png)
+![png](/_data/2023-01-16-ait-market/output_60_1.png)
     
 
 
@@ -2028,7 +2035,7 @@ plt.show()
 
 
     
-![png](output_69_0.png)
+![png](/_data/2023-01-16-ait-market/output_69_0.png)
     
 
 
@@ -2066,7 +2073,7 @@ print('푸른색 분포의 평균 :',np.mean(lower_80))
 
 
     
-![png](output_71_1.png)
+![png](/_data/2023-01-16-ait-market/output_71_1.png)
     
 
 
@@ -2212,7 +2219,7 @@ plt.show()
 
 
     
-![png](output_80_0.png)
+![png](/_data/2023-01-16-ait-market/output_80_0.png)
     
 
 
@@ -2250,7 +2257,7 @@ print('푸른색 분포의 평균 :',np.mean(lower_80))
 
 
     
-![png](output_82_1.png)
+![png](/_data/2023-01-16-ait-market/output_82_1.png)
     
 
 
@@ -2396,7 +2403,7 @@ plt.show()
 
 
     
-![png](output_91_0.png)
+![png](/_data/2023-01-16-ait-market/output_91_0.png)
     
 
 
@@ -2434,7 +2441,7 @@ print('푸른색 분포의 평균 :',np.mean(lower_80))
 
 
     
-![png](output_93_1.png)
+![png](/_data/2023-01-16-ait-market/output_93_1.png)
     
 
 
@@ -2887,7 +2894,7 @@ _=plt.legend(fontsize=30)
 
 
     
-![png](output_105_0.png)
+![png](/_data/2023-01-16-ait-market/output_105_0.png)
     
 
 
