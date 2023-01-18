@@ -1517,7 +1517,7 @@ ax.set_xticklabels(ax.get_xticklabels(),rotation=60);
 
 
     
-![png](/_data/2023-01-16-titanic-model-select/output_48_0.png)
+![png](/data/2023-01-16-titanic-model-select/output_48_0.png)
     
 
 
