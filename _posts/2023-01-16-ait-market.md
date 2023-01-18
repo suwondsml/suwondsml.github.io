@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Titanic Model Select
+title: AIT market
 authors: [Hongryul Ahn, Eunsu Kim, Inho Jung]
 categories: [1기 AI/SW developers(팀 프로젝트)]
 ---
@@ -8,7 +8,7 @@ categories: [1기 AI/SW developers(팀 프로젝트)]
 # # WHAT? 
 
 # "AIT마켓" : AI트레이더 거래 플랫폼
-![image.png](attachment:image.png)
+![png](/data/2023-01-16-ait-market/image1.png)
 
 ## AIT란?
 > "AIT마켓"에서 **`AIT`**는 "AI Trader"의 약자이며, "로보 어드바이저"에서 파생 및 차별화하여 고안한 용어로,  
@@ -16,7 +16,7 @@ AI로 매수/매도를 결정하는 단기 투자에 대한 AI모델입니다.
 
 ## AIT 마켓이란?
 
-> ![image-2.png](attachment:image-2.png)  
+> ![png](/data/2023-01-16-ait-market/image2.png)  
 "AIT마켓"은 운영자, 개발자, 구매자, 총 3명의 참여자가 상호작용하여 AI트레이더를 거래하는 플랫폼입니다.
 
 
@@ -24,14 +24,14 @@ AI로 매수/매도를 결정하는 단기 투자에 대한 AI모델입니다.
 
 ## 왜 AIT 마켓인가?
 > **1) 빠르게 성장 중인 로보 어드바이저 시장**  
-![image-2.png](attachment:image-2.png)
+![png](/data/2023-01-16-ait-market/image3.png)
 국내에서는 대표적으로 에임, 파운트, 핀트와 같은 로보어드바이저 서비스가 활성화되어있습니다. 이러한 로보어드바이저 서비스의 가입자수와 관리자산 금액이 세계적으로 급격히 증가하면서, 로보어드바이저의 시장규모는 크게 성장하고 있습니다.  
 
 <br>
     
 > **2) C2C 시장으로의 도전**  
 기존 로보어드바이저 시장은 위탁운용(D2C)서비스로 이루어져있어 서비스의 개방성에 제한이 있다는 문제점이 존재합니다. 
-![image-3.png](attachment:image-3.png)
+![png](/data/2023-01-16-ait-market/image4.png)
 당근마켓, 유튜브와 같이 C2C 시장이 형성된 후, 시장이 폭발적으로 성장한 예시들이 다수 존재합니다. "AIT 마켓"은 개발자와 구매자의 AI트레이더 거래를 연결하는 C2C 시장을 개척함으로써 인공지능 기반의 로보어드바이저 시장 성장에 기여할 수 있습니다. 
 
 # # HOW?
@@ -40,7 +40,7 @@ AI로 매수/매도를 결정하는 단기 투자에 대한 AI모델입니다.
 
 
 > "AIT 마켓"에서는 **`운영자`**, **`개발자`**, **`구매자`**, 총 3명의 참여자가 활동합니다.
-![image.png](attachment:image.png)  
+![png](/data/2023-01-16-ait-market/image5.png)  
 **`운영자`**는 학습 데이터 및 수익률 벤치마크를 제공함으로써 개발자와 구매자 간의 중개 역할을 하며, AI트레이더 시장 플랫폼을 제공합니다. <br> <br> 
 **`개발자`**는 인공지능 모델 학습을 통하여 AI 트레이더를 개발하고, 생성한 AI트레이더를 AIT마켓에 제출합니다.  <br> <br> 
 **`구매자`**는 AIT마켓에서 매매 히스토리 및 벤치마크 정보를 제공받아 AI트레이더를 구매하고, 이를  투자에 활용합니다.
@@ -48,7 +48,7 @@ AI로 매수/매도를 결정하는 단기 투자에 대한 AI모델입니다.
 ## AIT 마켓 프로세스 
 
 > AIT마켓은 크게 4단계의 프로세스로 진행됩니다.  
-![image.png](attachment:image.png) <br>  1) **`AIT 마켓 운영자`**는 KRX 및 각종 포털, 신문사에서 데이터를 수집하고, 구조화하여  AI트레이더 개발자에게 API 방식으로 제공합니다.   <br><br>
+![png](/data/2023-01-16-ait-market/image6.png) <br>  1) **`AIT 마켓 운영자`**는 KRX 및 각종 포털, 신문사에서 데이터를 수집하고, 구조화하여  AI트레이더 개발자에게 API 방식으로 제공합니다.   <br><br>
 2) **`AI트레이더 개발자`**는 AI트레이더를 개발하여 AIT마켓에 제출합니다. <br>  
 3) **`AI트레이더 구매자`**는 AIT마켓으로부터 AI트레이더 수익률 리더보드를 제공받습니다.<br>  
 4) **`AI트레이더 구매자`**는 3)에서 제공받은 정보를 토대로 AI트레이더 결제 및 구독을 진행합니다.
@@ -1465,7 +1465,7 @@ plt.show()
 
 
     
-![png](/_data/2023-01-16-ait-market/output_36_0.png)
+![png](/data/2023-01-16-ait-market/output_36_0.png)
     
 
 
@@ -1503,7 +1503,7 @@ print('푸른색 분포의 평균 :',np.mean(lower_80))
 
 
     
-![png](/_data/2023-01-16-ait-market/output_38_1.png)
+![png](/data/2023-01-16-ait-market/output_38_1.png)
     
 
 
@@ -1651,7 +1651,7 @@ plt.show()
 
 
     
-![png](/_data/2023-01-16-ait-market/output_47_0.png)
+![png](/data/2023-01-16-ait-market/output_47_0.png)
     
 
 
@@ -1689,7 +1689,7 @@ print('푸른색 분포의 평균 :',np.mean(lower_80))
 
 
     
-![png](/_data/2023-01-16-ait-market/output_49_1.png)
+![png](/data/2023-01-16-ait-market/output_49_1.png)
     
 
 
@@ -1851,7 +1851,7 @@ plt.show()
 
 
     
-![png](/_data/2023-01-16-ait-market/output_58_0.png)
+![png](/data/2023-01-16-ait-market/output_58_0.png)
     
 
 
@@ -1889,7 +1889,7 @@ print('푸른색 분포의 평균 :',np.mean(lower_80))
 
 
     
-![png](/_data/2023-01-16-ait-market/output_60_1.png)
+![png](/data/2023-01-16-ait-market/output_60_1.png)
     
 
 
@@ -2035,7 +2035,7 @@ plt.show()
 
 
     
-![png](/_data/2023-01-16-ait-market/output_69_0.png)
+![png](/data/2023-01-16-ait-market/output_69_0.png)
     
 
 
@@ -2073,7 +2073,7 @@ print('푸른색 분포의 평균 :',np.mean(lower_80))
 
 
     
-![png](/_data/2023-01-16-ait-market/output_71_1.png)
+![png](/data/2023-01-16-ait-market/output_71_1.png)
     
 
 
@@ -2219,7 +2219,7 @@ plt.show()
 
 
     
-![png](/_data/2023-01-16-ait-market/output_80_0.png)
+![png](/data/2023-01-16-ait-market/output_80_0.png)
     
 
 
@@ -2257,7 +2257,7 @@ print('푸른색 분포의 평균 :',np.mean(lower_80))
 
 
     
-![png](/_data/2023-01-16-ait-market/output_82_1.png)
+![png](/data/2023-01-16-ait-market/output_82_1.png)
     
 
 
@@ -2403,7 +2403,7 @@ plt.show()
 
 
     
-![png](/_data/2023-01-16-ait-market/output_91_0.png)
+![png](/data/2023-01-16-ait-market/output_91_0.png)
     
 
 
@@ -2441,7 +2441,7 @@ print('푸른색 분포의 평균 :',np.mean(lower_80))
 
 
     
-![png](/_data/2023-01-16-ait-market/output_93_1.png)
+![png](/data/2023-01-16-ait-market/output_93_1.png)
     
 
 
@@ -2894,7 +2894,7 @@ _=plt.legend(fontsize=30)
 
 
     
-![png](/_data/2023-01-16-ait-market/output_105_0.png)
+![png](/data/2023-01-16-ait-market/output_105_0.png)
     
 
 
