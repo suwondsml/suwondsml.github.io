@@ -301,7 +301,7 @@ warnings.filterwarnings('ignore')
 
 # 1. AIT 운영자 : 데이터 수집 / 구조화하여 제공 
  > AIT 마켓 운영자가 KRX 등 주가 데이터 데이터베이스로부터 데이터를 수집/가공하여 AIT 개발자들이 모델을 만들 수 있도록 학습 데이터를 제공하는 단계입니다. 
-![image-2.png](attachment:image-2.png) 
+![png](/data/2023-01-16-ait-market/image7.png) 
 
 ## 1.1. 종목 선정
 
