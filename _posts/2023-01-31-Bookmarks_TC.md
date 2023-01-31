@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Titanic Model Select
-authors: [Hongryul Ahn]
-categories: [1기 AI/SW developers( 프로젝트)]
+title: Bookmarks auto system
+authors: [Seongmin Cho]
+categories: [1기 AI/SW developers(팀 프로젝트)]
 ---
 
 # module import
