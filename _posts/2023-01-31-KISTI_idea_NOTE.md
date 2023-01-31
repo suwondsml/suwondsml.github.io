@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Test
+title: KISTI_idea_NOTE
 authors: [HyungJun Seo]
 categories: [1기 AI/SW developers(개인 프로젝트)]
 ---
