@@ -13,8 +13,8 @@ categories: [1기 AI/SW developers(개인 프로젝트)]
 ## 1.1 프로젝트 배경
 건설 장비 내부 기계 부품의 마모 상태 및 윤활 성능을 
 <br/>오일 데이터 분석을 통해 확인하고, 
-</br>AI를 활용한 <font color="#FFA93A">"분류 모델"</font> 개발을 통해 
-</br>적절한 🛠 교체 주기를 파악하고자 합니다!
+<br/>AI를 활용한 <font color="#FFA93A">"분류 모델"</font> 개발을 통해 
+<br/>적절한 🛠 교체 주기를 파악하고자 합니다!
 
 ![img](https://ifh.cc/g/ksWwhJ.jpg)
 
@@ -23,12 +23,12 @@ categories: [1기 AI/SW developers(개인 프로젝트)]
 
 ## 1.2 프로젝트 목적
 건설장비에서 작동오일의 상태를 실시간으로 모니터링하기 위한 오일 상태 판단 모델 개발
-</br> 🌳 이진분류(정상 / 이상)
+<br/> 🌳 이진분류(정상 / 이상)
 
 
 ## 1.3 개념 정리
 > **Knowledge Distillation**
-</br>지식(Knowledge)와 증류(Distillation)이 만나 지식증류 (Knowledge Distillation)라는 개념이 생겼다.
+<br/>지식(Knowledge)와 증류(Distillation)이 만나 지식증류 (Knowledge Distillation)라는 개념이 생겼다.
 
 > **구성요소**
 1. Model
@@ -39,7 +39,7 @@ categories: [1기 AI/SW developers(개인 프로젝트)]
 - Loss Function: Teacher 모델의 soft label과 Student 모델의 prediction 비교
 
 ![img](https://ifh.cc/g/jo4Onl.jpg)
-</br><font color="#636363">[출처: https://intellabs.github.io/distiller/knowledge_distillation.html ]</font>
+<br/><font color="#636363">[출처: https://intellabs.github.io/distiller/knowledge_distillation.html ]</font>
 
 
 # 2. 실습
@@ -937,7 +937,7 @@ all_X.isnull().sum()
 
 
 KNN을 사용하여 결측치를 처리하기 전,
-</br>데이터 <font color="#FFA93A">정규화 및 표준화</font> 처리를 해준다.
+<br/>데이터 <font color="#FFA93A">정규화 및 표준화</font> 처리를 해준다.
 
 
 ```python
@@ -967,13 +967,13 @@ for col in categorical_features:
 
 다른 데이터들의 레이블을 참조하여 분류하는 알고리즘
 
-</br>이 알고리즘에서의 <font color="FFA93A">hyperparameter</font>는 탐색할 이웃 수 <font color="FFA93A">k</font>와 거리 측정 방법
+<br/>이 알고리즘에서의 <font color="FFA93A">hyperparameter</font>는 탐색할 이웃 수 <font color="FFA93A">k</font>와 거리 측정 방법
 
 - k가 너무 <font color="FFA93A">작으면</font>, 모델이 데이터의 지역적인 특성을 지나치게 반영하여 overfitting 될 가능성 높아짐
 
 - k가 너무 <font color="FFA93A">크면</font>, 모델이 과하게 정규화 되어서 underfitting 될 가능성이 높아짐
 
-</br>단순하고, 훈련 단계가 빨라서 효율적임.
+<br/>단순하고, 훈련 단계가 빨라서 효율적임.
 
 
 ```python
@@ -2834,7 +2834,7 @@ train_X, val_X, train_y, val_y = train_test_split(all_X, all_y, test_size=0.2, r
 ## 2.6 모델링
 
 우선, BaseLine 에서 제공한 Modeling 코드를 사용하기 전
-</br>다른 여러 모델을 사용하여 각각 비교해본다.
+<br/>다른 여러 모델을 사용하여 각각 비교해본다.
 
 > SVM (Support Vector Machine)
 
