@@ -4183,6 +4183,3 @@ submit.head()
 
 
 
-```python
-
-```
