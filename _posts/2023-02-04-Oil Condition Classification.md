@@ -2,7 +2,7 @@
 layout: post
 title: Oil Condition Classification
 authors: [Minji Kim, Seoyeon Bae]
-categories: [1기 AI/SW developers(개인 프로젝트)]
+categories: [1기 AI/SW developers(팀 프로젝트)]
 ---
 
 # 건설기계 오일 상태 분류
