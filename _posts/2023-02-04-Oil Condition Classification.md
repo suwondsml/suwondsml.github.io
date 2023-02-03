@@ -861,7 +861,7 @@ msno.matrix(all_X)
 
 
     
-![png](output_29_1.png)
+![png](/data/2023-02-04-Oil Condition Classification/output_29_1.png)
     
 
 
@@ -2395,7 +2395,7 @@ plt.show()
 
 
     
-![png](output_46_0.png)
+![png](/data/2023-02-04-Oil Condition Classification/output_46_0.png)
     
 
 
