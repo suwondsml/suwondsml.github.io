@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  test
+title:  prediction of trevel product application
 authors: [TaeHyeon Kim]
 categories: [1기 AI/SW developers(개인 프로젝트)]
 ---
