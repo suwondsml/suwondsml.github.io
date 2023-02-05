@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "여행상품 신청예측"
+title:  test
 categories: [1기 AI/SW developers(개인 프로젝트)]
 ---
 데이콘 Basic 여행상품 신청예측
