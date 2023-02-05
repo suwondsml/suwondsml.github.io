@@ -432,7 +432,7 @@ sns.scatterplot(data=train, x='num_staff', y = 'box_off_num')
 
 
     
-![png](output_12_1.png)
+![output_12_1](https://user-images.githubusercontent.com/113446739/216802934-7aaaece0-d0f4-4717-98b3-8f7857803dcf.png)
     
 
 
@@ -453,7 +453,7 @@ sns.scatterplot(data=train, x='time', y = 'box_off_num')
 
 
     
-![png](output_14_1.png)
+![output_14_1](https://user-images.githubusercontent.com/113446739/216802936-d975d316-b184-4a07-a8e9-f194a804fc1d.png)
     
 
 
@@ -474,7 +474,7 @@ sns.scatterplot(data=train, x='genre', y = 'box_off_num')
 
 
     
-![png](output_16_1.png)
+![output_16_1](https://user-images.githubusercontent.com/113446739/216802938-660c5d72-3c64-4394-9728-f44c6d80806b.png)
     
 
 
@@ -495,7 +495,7 @@ sns.scatterplot(data=train, x='num_actor', y = 'box_off_num')
 
 
     
-![png](output_18_1.png)
+![output_18_1](https://user-images.githubusercontent.com/113446739/216802939-adaae5d9-5e12-410b-a757-728eaa52d154.png)
     
 
 
@@ -1323,7 +1323,7 @@ plt.show()
 
 
     
-![png](output_40_0.png)
+![output_40_0](https://user-images.githubusercontent.com/113446739/216802941-8550df6c-5422-4d2e-817a-a0fd435094c9.png)
     
 
 
@@ -1341,7 +1341,7 @@ sns.heatmap(train.corr(), annot = True)
 
 
     
-![png](output_41_1.png)
+![output_41_1](https://user-images.githubusercontent.com/113446739/216802942-15595a5f-eecd-4bc3-be98-28474540bfd5.png)
     
 
 
