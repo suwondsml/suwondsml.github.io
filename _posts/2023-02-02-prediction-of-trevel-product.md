@@ -1,8 +1,7 @@
 ---
 layout: single
-title:  "[Dacon] 여행상품 신청예측"
-categories: Dacon
-tag: [python, Dacon, ml]
+title:  "여행상품 신청예측"
+categories: 1기 AI/SW developers(개인 프로젝트)
 toc: true
 toc_sticky: true
 author_profile: true
