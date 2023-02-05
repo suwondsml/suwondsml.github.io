@@ -1473,7 +1473,7 @@ plt.title('chrom 종류별 개수')
 
 
     
-![png](output_15_1.png)
+![output_15_1](https://user-images.githubusercontent.com/113446739/216803658-771e0fd9-c690-4f7a-a260-58474a4ee958.png)
     
 
 
@@ -1493,7 +1493,7 @@ plt.title('유전거리 분포')
 
 
     
-![png](output_16_1.png)
+![output_16_1](https://user-images.githubusercontent.com/113446739/216803659-fa60fd6c-d9eb-4b76-a97d-8c14b74462b3.png)
     
 
 
@@ -1513,7 +1513,7 @@ plt.title('각 마커 유전체상 위치정보')
 
 
     
-![png](output_17_1.png)
+![output_17_1](https://user-images.githubusercontent.com/113446739/216803660-93ce4c33-c9e6-43df-85af-1ed6f6703ebb.png)
     
 
 
@@ -1861,7 +1861,7 @@ plt.title('chrom=6 인 SNP의 유전거리')
 
 
     
-![png](output_20_1.png)
+![output_20_1](https://user-images.githubusercontent.com/113446739/216803662-9370cf58-f749-4b17-bd60-392a30af4b6d.png)
     
 
 
@@ -1881,7 +1881,7 @@ plt.title('chrom=6 인 SNP의 유전체상 위치정보')
 
 
     
-![png](output_21_1.png)
+![output_21_1](https://user-images.githubusercontent.com/113446739/216803664-ac2a17bd-e0cd-4222-8d27-c1d2d09e41d8.png)
     
 
 
@@ -1901,7 +1901,7 @@ plt.title('chrom=9 인 SNP의 유전거리')
 
 
     
-![png](output_22_1.png)
+![output_22_1](https://user-images.githubusercontent.com/113446739/216803665-8ad2eb7d-991e-4927-b3e4-97fbdff48e89.png)
     
 
 
@@ -1921,7 +1921,7 @@ plt.title('chrom=9 인 SNP의 유전체상 위치정보')
 
 
     
-![png](output_23_1.png)
+![output_23_1](https://user-images.githubusercontent.com/113446739/216803666-1aab23d4-f296-4337-ac67-b9a559896c18.png)
     
 
 
@@ -3541,7 +3541,7 @@ sns.heatmap(train_num.astype(float).corr(), linewidths = 0.1, vmax = 1.0,
 
 
     
-![png](output_41_2.png)
+![output_41_2](https://user-images.githubusercontent.com/113446739/216803667-83f20750-6e0e-4479-abc0-ed22501cbbf3.png)
     
 
 
