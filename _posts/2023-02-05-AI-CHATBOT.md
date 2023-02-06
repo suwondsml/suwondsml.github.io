@@ -1,6 +1,6 @@
 ---
 layout: post
-title: AI CHATBOT[tourist attractions in Seoul]
+title: AI CHATBOT[Tourist Attractions in Seoul]
 authors: [Subin Sung]
 categories: [1기 AI/SW developers(개인 프로젝트)]
 ---
