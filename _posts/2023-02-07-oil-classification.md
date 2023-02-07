@@ -540,7 +540,7 @@ for col in corr_features :
 
 
     
-![png](output_24_1.png)
+![png](https://ifh.cc/g/tgNF4N.png)
     
 
 
@@ -549,7 +549,7 @@ for col in corr_features :
 
 
     
-![png](output_24_3.png)
+![png](https://ifh.cc/g/qydVGM.png)
     
 
 
@@ -558,7 +558,7 @@ for col in corr_features :
 
 
     
-![png](output_24_5.png)
+![png](https://ifh.cc/g/jLCK7h.png)
     
 
 
@@ -567,7 +567,7 @@ for col in corr_features :
 
 
     
-![png](output_24_7.png)
+![png](https://ifh.cc/g/6dsBdF.png)
     
 
 
@@ -576,7 +576,7 @@ for col in corr_features :
 
 
     
-![png](output_24_9.png)
+![png](https://ifh.cc/g/z48T0d.png)
     
 
 
@@ -585,7 +585,7 @@ for col in corr_features :
 
 
     
-![png](output_24_11.png)
+![png](https://ifh.cc/g/alCGSn.png)
     
 
 
@@ -605,7 +605,7 @@ sns.countplot(x = 'YEAR',data = train)
 
 
     
-![png](output_25_1.png)
+![png](https://ifh.cc/g/kqYqNv.png)
     
 
 
@@ -624,7 +624,7 @@ sns.countplot(x = 'COMPONENT_ARBITRARY',data = train)
 
 
     
-![png](output_26_1.png)
+![png](https://ifh.cc/g/3sBOGL.png)
     
 
 
@@ -645,7 +645,7 @@ plt.ylim(0, 65)
 
 
     
-![png](output_27_1.png)
+![png](https://ifh.cc/g/zPlTjL.png)
     
 
 
@@ -725,7 +725,7 @@ plt.show()
 
 
     
-![png](output_36_0.png)
+![png](https://ifh.cc/g/nR11Nd.png)
     
 
 
