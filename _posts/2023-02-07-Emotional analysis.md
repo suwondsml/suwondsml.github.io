@@ -96,7 +96,7 @@ sns.countplot(train['Target'])
 
 
     
-![png](/data/2023-02-07-Emotional analysis/output_5_2.png)
+![png](/data/2023-02-07-Emotional-analysis/output_5_2.png)
     
 
 
@@ -367,7 +367,7 @@ sns.countplot(a['Target'])
 
 
     
-![png](/data/2023-02-07-Emotional analysis/output_10_2.png)
+![png](/data/2023-02-07-Emotional-analysis/output_10_2.png)
     
 
 
@@ -906,7 +906,7 @@ plt.show()
 
 
     
-![png](/data/2023-02-07-Emotional analysis/output_19_1.png)
+![png](/data/2023-02-07-Emotional-analysis/output_19_1.png)
     
 
 
@@ -926,7 +926,7 @@ plt.show()
 
 
     
-![png](/data/2023-02-07-Emotional analysis/output_20_1.png)
+![png](/data/2023-02-07-Emotional-analysis/output_20_1.png)
     
 
 
