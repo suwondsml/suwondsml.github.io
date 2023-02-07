@@ -275,7 +275,8 @@ sns.heatmap(data=corr, annot=True, fmt='.2f', linewidths=.5, cmap='Blues')
 
 
     
-![png](output_22_1.png)
+![png](https://ifh.cc/g/vbogKh.png)
+
     
 
 
