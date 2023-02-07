@@ -604,7 +604,7 @@ plt.show()
 
 
     
-![png](output_13_0.png)
+![png](/data/2023-02-07-diabetes-classification-and-analysis/output_13_0.png)
     
 
 
@@ -618,7 +618,7 @@ plt.show()
 
 
     
-![png](output_14_0.png)
+![png](/data/2023-02-07-diabetes-classification-and-analysis/output_14_0.png)
     
 
 
@@ -681,7 +681,7 @@ plots(data, 'Pregnancies')
 
 
     
-![png](output_16_0.png)
+![png](/data/2023-02-07-diabetes-classification-and-analysis/output_16_0.png)
     
 
 
@@ -714,7 +714,7 @@ plots(data, 'Pregnancies')
 
 
     
-![png](output_18_0.png)
+![png](/data/2023-02-07-diabetes-classification-and-analysis/output_18_0.png)
     
 
 
@@ -741,7 +741,7 @@ sns.countplot(data=data, x='More than 1 child?',
 
 
     
-![png](output_21_1.png)
+![png](/data/2023-02-07-diabetes-classification-and-analysis/output_21_1.png)
     
 
 
@@ -756,7 +756,7 @@ plt.show()
 
 
     
-![png](output_23_0.png)
+![png](/data/2023-02-07-diabetes-classification-and-analysis/output_23_0.png)
     
 
 
@@ -767,7 +767,7 @@ plots(data, 'Glucose')
 
 
     
-![png](output_24_0.png)
+![png](/data/2023-02-07-diabetes-classification-and-analysis/output_24_0.png)
     
 
 
@@ -792,7 +792,7 @@ plots(data, 'Glucose')
 
 
     
-![png](output_26_0.png)
+![png](/data/2023-02-07-diabetes-classification-and-analysis/output_26_0.png)
     
 
 
@@ -807,7 +807,7 @@ plt.show()
 
 
     
-![png](output_28_0.png)
+![png](/data/2023-02-07-diabetes-classification-and-analysis/output_28_0.png)
     
 
 
@@ -818,7 +818,7 @@ plots(data, 'BloodPressure')
 
 
     
-![png](output_29_0.png)
+![png](/data/2023-02-07-diabetes-classification-and-analysis/output_29_0.png)
     
 
 
@@ -1343,7 +1343,7 @@ plots(data, 'BloodPressure')
 
 
     
-![png](output_33_0.png)
+![png](/data/2023-02-07-diabetes-classification-and-analysis/output_33_0.png)
     
 
 
@@ -1358,7 +1358,7 @@ plt.show()
 
 
     
-![png](output_35_0.png)
+![png](/data/2023-02-07-diabetes-classification-and-analysis/output_35_0.png)
     
 
 
@@ -1369,7 +1369,7 @@ plots(data, 'SkinThickness')
 
 
     
-![png](output_36_0.png)
+![png](/data/2023-02-07-diabetes-classification-and-analysis/output_36_0.png)
     
 
 
@@ -1420,7 +1420,7 @@ sns.countplot(data=data, x='SkinThicknessRating',
 
 
     
-![png](output_39_1.png)
+![png](/data/2023-02-07-diabetes-classification-and-analysis/output_39_1.png)
     
 
 
@@ -1450,7 +1450,7 @@ plt.show()
 
 
     
-![png](output_42_0.png)
+![png](/data/2023-02-07-diabetes-classification-and-analysis/output_42_0.png)
     
 
 
@@ -1461,7 +1461,7 @@ plots(data, 'Insulin')
 
 
     
-![png](output_43_0.png)
+![png](/data/2023-02-07-diabetes-classification-and-analysis/output_43_0.png)
     
 
 
@@ -1485,7 +1485,7 @@ plots(data, 'Insulin')
 
 
     
-![png](output_45_0.png)
+![png](/data/2023-02-07-diabetes-classification-and-analysis/output_45_0.png)
     
 
 
@@ -1502,7 +1502,7 @@ plt.show()
 
 
     
-![png](output_48_0.png)
+![png](/data/2023-02-07-diabetes-classification-and-analysis/output_48_0.png)
     
 
 
@@ -1513,7 +1513,7 @@ plots(data, 'BMI')
 
 
     
-![png](output_49_0.png)
+![png](/data/2023-02-07-diabetes-classification-and-analysis/output_49_0.png)
     
 
 
@@ -1546,7 +1546,7 @@ plots(data, 'BMI')
 
 
     
-![png](output_51_0.png)
+![png](/data/2023-02-07-diabetes-classification-and-analysis/output_51_0.png)
     
 
 
@@ -1576,7 +1576,7 @@ plt.show()
 
 
     
-![png](output_54_0.png)
+![png](/data/2023-02-07-diabetes-classification-and-analysis/output_54_0.png)
     
 
 
@@ -1587,7 +1587,7 @@ plots(data, 'DiabetesPedigreeFunction')
 
 
     
-![png](output_55_0.png)
+![png](/data/2023-02-07-diabetes-classification-and-analysis/output_55_0.png)
     
 
 
@@ -1615,7 +1615,7 @@ plt.show()
 
 
     
-![png](output_58_0.png)
+![png](/data/2023-02-07-diabetes-classification-and-analysis/output_58_0.png)
     
 
 
@@ -1626,7 +1626,7 @@ plots(data, 'Age')
 
 
     
-![png](output_59_0.png)
+![png](/data/2023-02-07-diabetes-classification-and-analysis/output_59_0.png)
     
 
 
