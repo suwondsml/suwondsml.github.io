@@ -425,13 +425,13 @@ plt.plot(hist["val_acc"])
 
 
     
-![png](output_26_1.png)
+![png](/data/2023-01-31-TFLite-sound/-output_26_1.png)
     
 
 
 
     
-![png](output_26_2.png)
+![png](/data/2023-01-31-TFLite-sound/output_26_2.png)
     
 
 
@@ -2853,7 +2853,7 @@ _ = plt.suptitle("TFLite model predictions (green: correct, red: incorrect)")
 
 
     
-![png](output_74_0.png)
+![png](/data/2023-01-31-TFLite-sound/output_74_0.png)
     
 
 
@@ -2941,7 +2941,7 @@ _ = plt.suptitle("Quantized TFLite model predictions (green: correct, red: incor
 
 
     
-![png](output_79_0.png)
+![png](/data/2023-01-31-TFLite-sound/output_79_0.png)
     
 
 
