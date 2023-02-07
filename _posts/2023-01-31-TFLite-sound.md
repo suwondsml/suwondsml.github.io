@@ -986,7 +986,7 @@ _ = plt.suptitle("Model predictions (green: correct, red: incorrect)")
 
 
     
-![png](output_44_0.png)
+![png](/data/2023-01-31-TFLite-sound/output_44_0.png)
     
 
 
