@@ -1831,3 +1831,4 @@ submit.to_csv('./submit.csv', index=False)
 ```
 
 최종 점수 : 0.56182 (상위 21%)
+미제출 최고 점수 :0.56697
