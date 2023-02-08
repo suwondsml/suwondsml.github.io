@@ -6,6 +6,7 @@ authors: [Seongmin Cho]
 categories: [1기 AI/SW developers(개인 프로젝트)]
 ---
 
+
 # 프로젝트 설명
 - 이번 프로젝트는 Dacon의 예술 작품 화가 분류 대회의 데이터를 활용하여 진행하였습니다.
 - 본 프로젝트에서 풀어야할 문제는 크게 2가지입니다.
