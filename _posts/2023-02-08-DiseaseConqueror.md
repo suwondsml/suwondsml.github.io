@@ -118,17 +118,17 @@ dc.metric_plot(results, target='고혈압', #지표 시각화 메소드
 
 **[OUT]**
 
-![img1](https://github.com/suwondsml/suwondsml.github.io/blob/main/data/2023-02-08-Classify-Artist/image1.jpg?raw=true)
-- 사진2 : Vincent van Gogh
-![img1](https://github.com/suwondsml/suwondsml.github.io/blob/main/data/2023-02-08-Classify-Artist/image1.jpg?raw=true)
-- 사진2 : Vincent van Gogh
-![f1.png](About%20DiseaseConqueror%20ff8a94f2883841c292425c90cf4bd9f3/f1.png)
+![acc.png](https://raw.githubusercontent.com/suwondsml/suwondsml.github.io/main/data/2023-02-08-DiseaseConqueror/ACC.png)
 
-![recall.png](About%20DiseaseConqueror%20ff8a94f2883841c292425c90cf4bd9f3/recall.png)
+![auc.png](https://raw.githubusercontent.com/suwondsml/suwondsml.github.io/main/data/2023-02-08-DiseaseConqueror/auc.png)
 
-![precision.png](About%20DiseaseConqueror%20ff8a94f2883841c292425c90cf4bd9f3/precision.png)
+![f1.png](https://raw.githubusercontent.com/suwondsml/suwondsml.github.io/main/data/2023-02-08-DiseaseConqueror/f1.png)
 
-![time.png](About%20DiseaseConqueror%20ff8a94f2883841c292425c90cf4bd9f3/time.png)
+![recall.png](Ahttps://raw.githubusercontent.com/suwondsml/suwondsml.github.io/main/data/2023-02-08-DiseaseConqueror/recall.png)
+
+![precision.png](https://raw.githubusercontent.com/suwondsml/suwondsml.github.io/main/data/2023-02-08-DiseaseConqueror/precision.png)
+
+![time.png](https://raw.githubusercontent.com/suwondsml/suwondsml.github.io/main/data/2023-02-08-DiseaseConqueror/time.png)
 
 - Accuracy
     - 맞춘 데이터 / 전체 데이터; 가장 직관성있는 평가방법임과 동시에 과적합을 확인하기에도 적합하다.
