@@ -80,9 +80,9 @@ out.
 
 `np.histogram` 메소드를 사용하여 빈도 분위로 나누어 주었는데 사실 이것은 목적에 맞지 않다
 
-![img1](https://raw.githubusercontent.com/suwondsml/suwondsml.github.io/main/data/2023-02-08-DiseaseConqueror/img1.png)
+![img1](https://raw.githubusercontent.com/suwondsml/suwondsml.github.io/main/data/2023-01-31-KISTI_idea_NOTE/img1.png)
 
-![img2](https://raw.githubusercontent.com/suwondsml/suwondsml.github.io/main/data/2023-02-08-DiseaseConqueror/img2.png)
+![img2](https://raw.githubusercontent.com/suwondsml/suwondsml.github.io/main/data/2023-01-31-KISTI_idea_NOTE/img2.png)
 
  왼쪽 그림이 88,99를 제거한 데이터 프레임의 히스토, 오른쪽이 `Gen_bins`의 bins를 통해 `np.digitize` 한 데이터 프레임의 히스토이다.
 
