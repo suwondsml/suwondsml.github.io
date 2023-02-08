@@ -611,7 +611,6 @@ Validation loss decreased (92.566729 --> 79.540437).  Saving model ...
 
 여러 모델을 대상으로 실험을 하였지만 보여주는 인사이트는 모두 비슷했습니다. 위에 보이는 것은 resnet18 모델을 대상으로 실험을 진행한 것이고 보이는 것처럼 가중 손실 함수 만을 사용하였을 때 성능이 좋은 것을 확인할 수 있습니다.
 
-
 ![img1](https://github.com/suwondsml/suwondsml.github.io/blob/main/data/2023-02-08-Classify-Artist/image10.png?raw=true)
 
 다음으로 각 모델들을 모두 돌려보고 각 정확도와 손실함수를 적어 비교해보았습니다. 
