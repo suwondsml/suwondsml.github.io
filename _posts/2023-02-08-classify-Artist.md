@@ -590,7 +590,7 @@ Validation loss decreased (92.566729 --> 79.540437).  Saving model ...
 
 즉, 어떤 기법을 사용해야할지 실험을 해야만 했습니다. 먼저 어떤 기법을 사용하였을 때 성능이 올라가는지 각각 비교를 하여 실험을 진행하였습니다.
 
-<실험결과>
+**실험 결과**
 
 ![img1](https://github.com/suwondsml/suwondsml.github.io/blob/main/data/2023-02-08-Classify-Artist/image11.png?raw=true)
 
@@ -602,8 +602,9 @@ Validation loss decreased (92.566729 --> 79.540437).  Saving model ...
 
 하지만 F1-score를 사용하게 되면 모델이 True라고 분류한 것들 중에서 실제로 True인 것의 비율을 나타내는 Precision과 실제 True인 것들 중에서 모델이 True라고 예측한 것의 비율을 나타내는 Recall을 모두 고려하기 때문에 단순 정확도보다 불균형에 대해 훨씬 민감하게 평가를 할 수 있게 됩니다.
 
----
-이제 각 모델들에 대해 총 3가지에 대해 실험을 진행하였습니다.
+
+**이제 각 모델들에 대해 총 3가지에 대해 실험을 진행하였습니다.**
+
 1. 가중 무작위 샘플링과 가중 손실 함수 둘 모두 적용
 2. 가중 손실 함수만 적용
 3. 두 기법 모두 적용 X
