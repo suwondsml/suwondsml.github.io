@@ -13,7 +13,7 @@ categories: [1기 AI/SW developers(개인 프로젝트)]
 	2. 데이터 불균형 문제를 어떻게 해결해야하는가?
 
 - 데이터를 분석하고 예측할 때 가장 흔히 접할 수 있는 문제가 위와 같은 문제이며, 2가지 문제를 풀기 위해 다양한 기법들을 시도하였습니다.
-- https://dacon.io/competitions/official/236006/overview/description
+- [월간 데이콘 예술 작품 화가 분류 AI 경진대회](https://dacon.io/competitions/official/236006/overview/description)
 
 ## Data
 train 데이터로는 총 5911개의 데이터가 주어집니다.
@@ -627,4 +627,4 @@ Validation loss decreased (92.566729 --> 79.540437).  Saving model ...
 
 
 - EfficientNet 에 대한 설명은 제 개인 블로그에 자세히 설명해놓았으니 참고하시면 될 것 같습니다.
-- https://smcho1201.tistory.com/56
+- [머신러닝 이야기 - [논문 리뷰] EfficientNet(2019), 파이토치 구현](https://smcho1201.tistory.com/56)
