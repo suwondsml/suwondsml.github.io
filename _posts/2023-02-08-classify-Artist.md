@@ -1,3 +1,4 @@
+
 ---
 layout: post
 title: Classify Artist
@@ -7,6 +8,11 @@ categories: [1기 AI/SW developers(개인 프로젝트)]
 
 # 프로젝트 설명
 - 이번 프로젝트는 Dacon의 예술 작품 화가 분류 대회의 데이터를 활용하여 진행하였습니다.
+- 본 프로젝트에서 풀어야할 문제는 크게 2가지입니다.
+	1. 어떤 모델을 사용하여야 하는가?
+	2. 데이터 불균형 문제를 어떻게 해결해야하는가?
+
+- 데이터를 분석하고 예측할 때 가장 흔히 접할 수 있는 문제가 위와 같은 문제이며, 2가지 문제를 풀기 위해 다양한 기법들을 시도하였습니다.
 - https://dacon.io/competitions/official/236006/overview/description
 
 ## Data
@@ -161,6 +167,14 @@ for i in range(0, 5):
     print(ndarray.shape)
 ```
 ![img1](https://github.com/suwondsml/suwondsml.github.io/blob/main/data/2023-02-08-Classify-Artist/image9.png?raw=true)
+
+**X_train에는 경로, 화가이름, 라벨 총 3가지가 포함되어 있습니다.**
+- 첫 번째, 이미지 경로를 통해 image를 출력할 수 있으며, shape을 확인해보니 (1300 x 1024 x 3) 의 형태로 구성되어 있습니다. 
+- 두 번째,  해당 이미지의 화가 이름을 출력해보니 Vincent Van Gogh 가 일치하게 출력되는 것을 확인할 수 있습니다.
+-  세 번째, 화가 이름을 인코딩한 라벨 역시 0으로 잘 출력됩니다.
+
+
+
 
 ## transform
 데이터를 전처리 하기 위해 torchvision 라이브러리에서 제공하는 transforms 함수를 사용하였습니다.
@@ -505,7 +519,7 @@ for model_name in models:
 이 함수를 실행시키면 다음과 같이 결과가 나오게 됩니다.
 
 
-##### wide_resnet50_2 ##### wide_resnet50_2 ##### wide_resnet50_2 ##### wide_resnet50_2 ##### wide_resnet50_2 ##### wide_resnet50_2 #####
+ _##### wide_resnet50_2 ##### wide_resnet50_2 ##### wide_resnet50_2 ##### wide_resnet50_2 ##### wide_resnet50_2 ##### wide_resnet50_2 #####_
 
 [ Train epoch: 1 ]
 
@@ -576,7 +590,23 @@ Validation loss decreased (92.566729 --> 79.540437).  Saving model ...
 
 즉, 어떤 기법을 사용해야할지 실험을 해야만 했습니다. 먼저 어떤 기법을 사용하였을 때 성능이 올라가는지 각각 비교를 하여 실험을 진행하였습니다.
 
+<실험결과>
 ![img1](https://github.com/suwondsml/suwondsml.github.io/blob/main/data/2023-02-08-Classify-Artist/image11.png?raw=true)
+
+데이터의 불균형 문제를 해결하였는지 설명할 수 있는 지표인 F1-score를 사용하였습니다. F1-score에 대한 간단한 설명은 다음과 같습니다.
+
+먼저 왜 단순 Accuracy만으로는 데이터 불균형이 해결되었는지 확인이 어려운지 간단한 예시를 들어보겠습니다.
+
+만약 일주일에 평균적으로 1번 비가 온다고 했을 때, 기상청에서 **항상 비가 내리지 않습니다.** 라고 한다면 이는 좋은 예측이라 할 수 없을 것입니다. 하지만 평균적으로 6/7의 정확도를 보여주기에 정확도로만 본다면 좋은 예측으로 결과가 나오게 될 것입니다.
+
+하지만 F1-score를 사용하게 되면 모델이 True라고 분류한 것들 중에서 실제로 True인 것의 비율을 나타내는 Precision과 실제 True인 것들 중에서 모델이 True라고 예측한 것의 비율을 나타내는 Recall을 모두 고려하기 때문에 단순 정확도보다 불균형에 대해 훨씬 민감하게 평가를 할 수 있게 됩니다.
+
+---
+이제 각 모델들에 대해 총 3가지에 대해 실험을 진행하였습니다.
+1. 가중 무작위 샘플링과 가중 손실 함수 둘 모두 적용
+2. 가중 손실 함수만 적용
+3. 두 기법 모두 적용 X
+
 
 여러 모델을 대상으로 실험을 하였지만 보여주는 인사이트는 모두 비슷했습니다. 위에 보이는 것은 resnet18 모델을 대상으로 실험을 진행한 것이고 보이는 것처럼 가중 손실 함수 만을 사용하였을 때 성능이 좋은 것을 확인할 수 있습니다.
 
@@ -587,12 +617,14 @@ Validation loss decreased (92.566729 --> 79.540437).  Saving model ...
 
 위에서 알 수 있는 결과는 EfficientNet_b4 모델을 사용하였을 때 가장 성능이 좋았습니다. 아무래도 19년도에 SOTA 를 차지하였던 EfficientNet 모델을 기반으로 한 모델이니만큼 다른 모델들에 비해 성능이 좋았던 것 같습니다.
 
-또한 데이터의 수가 상당히 많은 양도 아니었기에 모델의 width와 depth를 모두 고려하여 가장 최적의 모델을 도출해내기 때문에 적당한 데이터로 최상의 결과를 만들 수 있었다고 생각합니다. 
+또한 데이터의 수가 상당히 많은 양도 아니었기에 단순히 모델의 깊이를 늘려가며 성능을 높여가는 VGGNet과 모델을 넓게 즉, width를 넓여 성능을 넓히려 하였던 InceptionNet과 달리 EfficientNet은 성능을 높일 수 있는 모든 조건들을 모두 사용하여 최적의 성능을 도출합니다.
+
+적은 데이터를 사용하였을 때는 과접합이 오기 상당히 쉽습니다. 하지만 모델의 width와 depth를 모두 고려하여 가장 최적의 모델을 도출해내기 때문에 적당한 데이터로 최상의 결과를 만들 수 있었다고 생각합니다. 
+
+---
 
 
 
 
-
-
-- EfficientNet 에 대한 설명은 밑에 링크로 달아놓겠습니다.
+- EfficientNet 에 대한 설명은 제 개인 블로그에 자세히 설명해놓았으니 참고하시면 될 것 같습니다.
 - https://smcho1201.tistory.com/56
