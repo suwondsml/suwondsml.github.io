@@ -1,7 +1,7 @@
 ---
 layout: post
 title: dataon-project
-authors: [Jinah Kim]
+authors: [Jinah Kim,Hyungjun Seo, Woojin Jo]
 categories: [1기 AI/SW developers(개인 프로젝트)]
 ---
 
@@ -10,7 +10,7 @@ categories: [1기 AI/SW developers(개인 프로젝트)]
   - 대회 명 : 2022 연구데이터 활용분석 경진대회
   - 대회 사이트 : [http://dataon-con.kr/](http://dataon-con.kr/)
   - 팀 명 : 데사증후군 (Data Science Syndrom)
-  - "데사증후군" github 링크 : [https://github.com/Data-analysis-utilization-contest](https://github.com/Data-analysis-utilization-contest)
+  - `데사증후군` github 링크 : [https://github.com/Data-analysis-utilization-contest](https://github.com/Data-analysis-utilization-contest)
 
 <br/>
 
@@ -26,26 +26,26 @@ categories: [1기 AI/SW developers(개인 프로젝트)]
 <br/>
 
 # workflow
-  1. **각 연도별 원시자료 이용지침서를 바탕으로 엑셀파일에 "변수명, 변수설명, 내용"컬럼의 내용들을 복사하여 붙여줍니다.**
+  1. `각 연도별 원시자료 이용지침서를 바탕으로 엑셀파일에 "변수명, 변수설명, 내용"컬럼의 내용들을 복사하여 붙여줍니다.`
 
         (~~맥북은 한글파일 작업을 못해 한글파일 작업하기 번거롭다..~~)
 
         이용지침서에 없는 변수명을 다른 년도의 이용지침서를 참고하여 보강했습니다.
 
-  2. **1차로 필요 데이터를 가공합니다.**
+  2. `1차로 필요 데이터를 가공합니다.`
     
         "변수명, 변수설명, 내용" 컬럼 데이터 중 데이터분석에 중요하지 않은 내용들을 etc라는 컬럼에 저장합니다.  
         (~~"내용" 컬럼 데이터에 "\xa0" 나 여러 자세한 설명들이 기재되어 있어 코드가 점점 늘어납니다.~~)
 
         etc
 
-  3. **2차로 선택지 설명 컬럼 데이터를 가공합니다.** 
+  3. `2차로 선택지 설명 컬럼 데이터를 가공합니다.`
 
         "내용" 컬럼을 "선택지_설명"으로 이름을 바꿔줍니다.
         
         각 데이터가 없을 경우 `nan`, `NaN`으로 같은 nan값이 다른 모습으로 나타나 있어 통일시켜 주고, 각 선택지를 `,`에서 `|`로 구분합니다.
 
-  4. **최종 데이터를 병합하여 엑셀파일로 다시 저장해줍니다.**
+  4. `최종 데이터를 병합하여 엑셀파일로 다시 저장해줍니다.`
 
 <br/>
 
