@@ -1,6 +1,6 @@
 ---
 layout: post
-title: KISTI_idea_NOTE
+title: About DiseaseConqueror
 authors: [HyungJun Seo]
 categories: [1기 AI/SW developers(팀 프로젝트)]
 ---
@@ -40,7 +40,7 @@ categories: [1기 AI/SW developers(팀 프로젝트)]
 - 소프트웨어 역량이 없이도 사용 할 수 있는 **통합 머신러닝 분석 프로세스**
 - 사용자 목적에 맞는 변형이 가능하도록 하는 **모듈화**
 
-![Disease Conqueror_PPT.png](About%20DiseaseConqueror%20ff8a94f2883841c292425c90cf4bd9f3/Disease_Conqueror_PPT.png)
+![Disease Conqueror_PPT.png](https://github.com/suwondsml/suwondsml.github.io/blob/main/data/2023-02-08-DiseaseConqueror/Disease_Conqueror_PPT.png)
 
 우리는 데이터에 대한 접근 경험 강화를 위해 데이터 분석 프로세스를 **4가지의 모듈**로 분해했다.
 
@@ -118,10 +118,10 @@ dc.metric_plot(results, target='고혈압', #지표 시각화 메소드
 
 **[OUT]**
 
-![acc.png](About%20DiseaseConqueror%20ff8a94f2883841c292425c90cf4bd9f3/acc.png)
-
-![auc.png](About%20DiseaseConqueror%20ff8a94f2883841c292425c90cf4bd9f3/auc.png)
-
+![img1](https://github.com/suwondsml/suwondsml.github.io/blob/main/data/2023-02-08-Classify-Artist/image1.jpg?raw=true)
+- 사진2 : Vincent van Gogh
+![img1](https://github.com/suwondsml/suwondsml.github.io/blob/main/data/2023-02-08-Classify-Artist/image1.jpg?raw=true)
+- 사진2 : Vincent van Gogh
 ![f1.png](About%20DiseaseConqueror%20ff8a94f2883841c292425c90cf4bd9f3/f1.png)
 
 ![recall.png](About%20DiseaseConqueror%20ff8a94f2883841c292425c90cf4bd9f3/recall.png)
