@@ -1,10 +1,10 @@
-
 ---
 layout: post
 title: Bookmarks auto system
 authors: [Seongmin Cho]
 categories: [1기 AI/SW developers(팀 프로젝트)]
 ---
+
 ![img1](https://github.com/suwondsml/suwondsml.github.io/blob/main/data/2023-02-08-Bookmarks_TC/title.png?raw=true)
 
 ![img1](https://github.com/suwondsml/suwondsml.github.io/blob/main/data/2023-02-08-Bookmarks_TC/image1.png?raw=true)
