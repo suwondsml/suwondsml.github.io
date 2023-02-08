@@ -1,9 +1,21 @@
+
 ---
 layout: post
 title: Bookmarks auto system
 authors: [Seongmin Cho]
 categories: [1기 AI/SW developers(팀 프로젝트)]
 ---
+![img1](https://github.com/suwondsml/suwondsml.github.io/blob/main/data/2023-02-08-Bookmarks_TC/title.png?raw=true)
+
+![img1](https://github.com/suwondsml/suwondsml.github.io/blob/main/data/2023-02-08-Bookmarks_TC/image1.png?raw=true)
+![img1](https://github.com/suwondsml/suwondsml.github.io/blob/main/data/2023-02-08-Bookmarks_TC/image2.png?raw=true)
+![img1](https://github.com/suwondsml/suwondsml.github.io/blob/main/data/2023-02-08-Bookmarks_TC/image3.png?raw=true)
+![img1](https://github.com/suwondsml/suwondsml.github.io/blob/main/data/2023-02-08-Bookmarks_TC/image4.png?raw=true)
+![img1](https://github.com/suwondsml/suwondsml.github.io/blob/main/data/2023-02-08-Bookmarks_TC/image5.png?raw=true)
+![img1](https://github.com/suwondsml/suwondsml.github.io/blob/main/data/2023-02-08-Bookmarks_TC/image6.png?raw=true)
+![img1](https://github.com/suwondsml/suwondsml.github.io/blob/main/data/2023-02-08-Bookmarks_TC/image7.png?raw=true)
+![img1](https://github.com/suwondsml/suwondsml.github.io/blob/main/data/2023-02-08-Bookmarks_TC/image8.png?raw=true)
+![img1](https://github.com/suwondsml/suwondsml.github.io/blob/main/data/2023-02-08-Bookmarks_TC/image9.png?raw=true)
 
 # module import
 
