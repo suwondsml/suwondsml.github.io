@@ -40,7 +40,7 @@ categories: [1기 AI/SW developers(팀 프로젝트)]
 - 소프트웨어 역량이 없이도 사용 할 수 있는 **통합 머신러닝 분석 프로세스**
 - 사용자 목적에 맞는 변형이 가능하도록 하는 **모듈화**
 
-![Disease Conqueror_PPT.png](https://github.com/suwondsml/suwondsml.github.io/blob/main/data/2023-02-08-DiseaseConqueror/Disease_Conqueror_PPT.png)
+![Disease Conqueror_PPT.png](https://raw.githubusercontent.com/suwondsml/suwondsml.github.io/main/data/2023-02-08-DiseaseConqueror/Disease_Conqueror_PPT.png)
 
 우리는 데이터에 대한 접근 경험 강화를 위해 데이터 분석 프로세스를 **4가지의 모듈**로 분해했다.
 
