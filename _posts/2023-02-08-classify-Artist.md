@@ -591,6 +591,7 @@ Validation loss decreased (92.566729 --> 79.540437).  Saving model ...
 즉, 어떤 기법을 사용해야할지 실험을 해야만 했습니다. 먼저 어떤 기법을 사용하였을 때 성능이 올라가는지 각각 비교를 하여 실험을 진행하였습니다.
 
 <실험결과>
+
 ![img1](https://github.com/suwondsml/suwondsml.github.io/blob/main/data/2023-02-08-Classify-Artist/image11.png?raw=true)
 
 데이터의 불균형 문제를 해결하였는지 설명할 수 있는 지표인 F1-score를 사용하였습니다. F1-score에 대한 간단한 설명은 다음과 같습니다.
