@@ -118,13 +118,13 @@ dc.metric_plot(results, target='고혈압', #지표 시각화 메소드
 
 **[OUT]**
 
-![acc.png](https://raw.githubusercontent.com/suwondsml/suwondsml.github.io/main/data/2023-02-08-DiseaseConqueror/ACC.png)
+![acc.png](https://raw.githubusercontent.com/suwondsml/suwondsml.github.io/main/data/2023-02-08-DiseaseConqueror/acc.png)
 
 ![auc.png](https://raw.githubusercontent.com/suwondsml/suwondsml.github.io/main/data/2023-02-08-DiseaseConqueror/auc.png)
 
 ![f1.png](https://raw.githubusercontent.com/suwondsml/suwondsml.github.io/main/data/2023-02-08-DiseaseConqueror/f1.png)
 
-![recall.png](Ahttps://raw.githubusercontent.com/suwondsml/suwondsml.github.io/main/data/2023-02-08-DiseaseConqueror/recall.png)
+![recall.png](https://raw.githubusercontent.com/suwondsml/suwondsml.github.io/main/data/2023-02-08-DiseaseConqueror/recall.png)
 
 ![precision.png](https://raw.githubusercontent.com/suwondsml/suwondsml.github.io/main/data/2023-02-08-DiseaseConqueror/precision.png)
 
