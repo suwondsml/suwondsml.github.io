@@ -164,7 +164,7 @@ dc.metric_plot(results, target='고혈압', #지표 시각화 메소드
 factor = dc.factor_extraction(data, target='고혈압', models=['RandomForest', 'AdaBoost', 'Gradient Boosting', 'XGBoost', 'LightGBM'], one_hot_encoding=True, n=40, random_state=42, visualization=False)
 ```
 
-![Untitled](About%20DiseaseConqueror%20ff8a94f2883841c292425c90cf4bd9f3/Untitled.png)
+![Untitled](https://raw.githubusercontent.com/suwondsml/suwondsml.github.io/main/data/2023-02-08-DiseaseConqueror/Untitled.png)
 
 그렇기에 이렇게 모델별 FI를 평균낸 지표의 활용은 썩 **유의해 보였다.**
 
