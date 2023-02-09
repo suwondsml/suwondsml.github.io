@@ -2,7 +2,7 @@
 layout: post
 title: Dacon tengery
 authors: [chanho]
-categories: [1기 AI/SW developers(개인 프로젝트)]
+categories: [1기 AI/SW developers(팀 프로젝트)]
 ---
 
 
