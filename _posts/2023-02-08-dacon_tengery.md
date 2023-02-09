@@ -1,10 +1,8 @@
 ---
 layout: post
-title: "Dacon 감귤 착과량 예측 경진대회"
-author: "ChanHo"
-comments: true
-tags: Tale
-excerpt_separator: <!--more-->
+title: Dacon tengery
+authors: [chanho]
+categories: [1기 AI/SW developers(개인 프로젝트)]
 ---
 
 
